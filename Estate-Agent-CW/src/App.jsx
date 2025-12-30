@@ -7,6 +7,7 @@ function App() {
   const properties = propertiesData.properties;
   const [selectedType, setSelectedType] = useState('');
   const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
 
 
   // Create an empty list to store what we want to show
@@ -16,6 +17,21 @@ function App() {
   for (let i = 0; i < properties.length; i++) {
 
     const property = properties[i];
+
+    // filter by type
+    if (selectedType !== '' && property.type !== selectedType) {
+      continue;
+    }
+
+    // filter by minimum price
+    if (minPrice !== '' && property.price < Number(minPrice)) {
+      continue;
+    }
+
+    // filter by maximum price
+    if (maxPrice !== '' && property.price > Number(maxPrice)) {
+      continue;
+    }
 
     propertyElements.push(
       <div key={property.id} style={{ marginBottom: '20px' }}>
@@ -49,6 +65,15 @@ function App() {
           type="number"
           value={minPrice}
           onChange={(event) => setMinPrice(event.target.value)}
+        />
+      </label>
+
+      <label>
+        Maximum Price:
+        <input
+          type="number"
+          value={maxPrice}
+          onChange={(event) => setMaxPrice(event.target.value)}
         />
       </label>
     </div>

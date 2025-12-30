@@ -6,6 +6,8 @@ function App() {
 
   const properties = propertiesData.properties;
   const [selectedType, setSelectedType] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+
 
   // Create an empty list to store what we want to show
   const propertyElements = [];
@@ -28,6 +30,30 @@ function App() {
   return (
     <div>
       <h1>Estate Agent App</h1>
+      <label>
+        Property Type:
+        <select
+          value={selectedType}
+          onChange={(event) => setSelectedType(event.target.value)}
+        >
+          <option value="">Any</option>
+          <option value="House">House</option>
+          <option value="Flat">Flat</option>
+        </select>
+      </label>
+
+    <div>
+      <label>
+        Minimum Price:
+        <input
+          type="number"
+          value={minPrice}
+          onChange={(event) => setMinPrice(event.target.value)}
+        />
+      </label>
+    </div>
+
+
 
       {propertyElements}
     </div>

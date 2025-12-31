@@ -10,6 +10,10 @@ function App() {
   const [maxPrice, setMaxPrice] = useState('');
   const [minBedrooms, setMinBedrooms] = useState('');
   const [maxBedrooms, setMaxBedrooms] = useState('');
+  const [addedAfter, setAddedAfter] = useState('');
+  const [postcode, setPostcode] = useState('');
+
+
 
   // empty list to store what we want to show
   const propertyElements = [];
@@ -35,15 +39,40 @@ function App() {
     }
 
 
-    // filter by minimum price
+    // filter by minimum bedrooms
     if (minBedrooms !== '' && property.bedrooms < Number(minBedrooms)) {
       continue;
     }
 
-    // filter by maximum price
+    // filter by maximum bedrooms
     if (maxBedrooms !== '' && property.bedrooms > Number(maxBedrooms)) {
       continue;
     }
+
+    // filter by date added (after selected date)
+    if (addedAfter !== '') {
+
+      const propertyDate = new Date(
+        property.added.year,
+        new Date(Date.parse(property.added.month + " 1, 2022")).getMonth(),
+        property.added.day
+      );
+
+      // filter by postcode area
+    if (postcode !== '' && !property.location.toUpperCase().includes(postcode.toUpperCase())) {
+      continue;
+    }
+
+
+      const selectedDate = new Date(addedAfter);
+
+      if (propertyDate < selectedDate) {
+        continue;
+      }
+    }
+
+
+
 
 
     propertyElements.push(
@@ -55,7 +84,8 @@ function App() {
       </div>
     );
   }
-
+   
+  // inputs
   return (
 
     <div>
@@ -95,6 +125,7 @@ function App() {
       </label>
     </div>
 
+
     <div>
       <label>
         Minimum Bedrooms:
@@ -106,6 +137,7 @@ function App() {
       </label>
     </div>
 
+
     <div>
       <label>
         Maximum Bedrooms:
@@ -116,6 +148,33 @@ function App() {
         />
       </label>
     </div>
+
+    <div>
+      <label>
+        Added After:
+        <input
+          type="date"
+          value={addedAfter}
+          onChange={(event) => setAddedAfter(event.target.value)}
+        />
+      </label>
+    </div>
+
+    <div>
+      <label>
+        Postcode Area:
+        <input
+          type="text"
+          value={postcode}
+          onChange={(event) => setPostcode(event.target.value)}
+          placeholder="Ex: BR1, NW1"
+        />
+      </label>
+    </div>
+
+
+
+
 
 
       {propertyElements}

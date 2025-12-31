@@ -11,6 +11,7 @@ function App() {
   const [minBedrooms, setMinBedrooms] = useState('');
   const [maxBedrooms, setMaxBedrooms] = useState('');
   const [addedAfter, setAddedAfter] = useState('');
+  const [addedBefore, setAddedBefore] = useState('');
   const [postcode, setPostcode] = useState('');
 
 
@@ -151,7 +152,7 @@ function App() {
 
     <div>
       <label>
-        Added After:
+        Date From:
         <input
           type="date"
           value={addedAfter}
@@ -159,6 +160,16 @@ function App() {
         />
       </label>
     </div>
+
+    <label>
+      Date To:
+      <input
+        type="date"
+        value={addedBefore}
+        onChange={(event) => setAddedBefore(event.target.value)}
+      />
+    </label>
+
 
     <div>
       <label>

@@ -8,9 +8,10 @@ function App() {
   const [selectedType, setSelectedType] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  const [minBedrooms, setMinBedrooms] = useState('');
+  const [maxBedrooms, setMaxBedrooms] = useState('');
 
-
-  // Create an empty list to store what we want to show
+  // empty list to store what we want to show
   const propertyElements = [];
 
   // Normal for loop
@@ -33,6 +34,18 @@ function App() {
       continue;
     }
 
+
+    // filter by minimum price
+    if (minBedrooms !== '' && property.bedrooms < Number(minBedrooms)) {
+      continue;
+    }
+
+    // filter by maximum price
+    if (maxBedrooms !== '' && property.bedrooms > Number(maxBedrooms)) {
+      continue;
+    }
+
+
     propertyElements.push(
       <div key={property.id} style={{ marginBottom: '20px' }}>
         <h3>{property.type}</h3>
@@ -44,6 +57,7 @@ function App() {
   }
 
   return (
+
     <div>
       <h1>Estate Agent App</h1>
       <label>
@@ -58,6 +72,7 @@ function App() {
         </select>
       </label>
 
+
     <div>
       <label>
         Minimum Price:
@@ -67,6 +82,8 @@ function App() {
           onChange={(event) => setMinPrice(event.target.value)}
         />
       </label>
+
+
 
       <label>
         Maximum Price:
@@ -78,6 +95,27 @@ function App() {
       </label>
     </div>
 
+    <div>
+      <label>
+        Minimum Bedrooms:
+        <input
+          type="number"
+          value={minBedrooms}
+          onChange={(event) => setMinBedrooms(event.target.value)}
+        />
+      </label>
+    </div>
+
+    <div>
+      <label>
+        Maximum Bedrooms:
+        <input
+          type="number"
+          value={maxBedrooms}
+          onChange={(event) => setMaxBedrooms(event.target.value)}
+        />
+      </label>
+    </div>
 
 
       {propertyElements}

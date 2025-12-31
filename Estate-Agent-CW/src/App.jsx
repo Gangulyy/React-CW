@@ -77,7 +77,20 @@ function App() {
 
 
     propertyElements.push(
-      <div key={property.id} style={{ marginBottom: '20px' }}>
+      <div 
+        key={property.id} 
+        style={{
+          border: '1px solid #ccc',
+          padding: '15px',
+          marginBottom: '20px' 
+        }}
+      >
+        <img
+          src={property.picture}
+          alt="Property"
+          style={{ width: '100%', maxWidth: '300px' }}
+        />
+        
         <h3>{property.type}</h3>
         <p>Price: £{property.price}</p>
         <p>Bedrooms: {property.bedrooms}</p>

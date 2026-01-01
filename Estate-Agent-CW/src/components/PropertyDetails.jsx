@@ -33,7 +33,7 @@ function PropertyDetails({
       <img
         src={property.pictures[selectedImage]}
         alt="Property"
-        style={{ width: '300px' }}
+        style={{ width: '300px', maxWidth: '400px' }}
       />
 
       {/* Thumbnails */}

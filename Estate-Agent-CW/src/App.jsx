@@ -89,9 +89,10 @@ function clearFavourites() {
   // inputs
   return (
 
-    <div>
+    <div className = "app">
       <h1>Estate Agent App</h1>
 
+      <div className="searchLayout">
       <SearchForm
         selectedType={selectedType}
         setSelectedType={setSelectedType}
@@ -146,6 +147,7 @@ function clearFavourites() {
           onBack={() => setSelectedProperty(null)}
         />
       )}
+      </div>
 
 
 

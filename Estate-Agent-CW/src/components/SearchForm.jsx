@@ -34,43 +34,63 @@ function SearchForm({
 
       <div>
         <label>
-          Minimum Price:
-          <input
-            type="number"
-            value={minPrice}
+        Minimum Price (£{minPrice || 0})
+        <input
+            type="range"
+            min="0"
+            max="1500000"
+            step="50000"
+            value={minPrice || 0}
             onChange={(event) => setMinPrice(event.target.value)}
-          />
+        />
         </label>
 
+
         <label>
-          Maximum Price:
-          <input
-            type="number"
-            value={maxPrice}
+        Maximum Price (£{maxPrice || 1500000})
+        <input
+            type="range"
+            min="0"
+            max="1500000"
+            step="50000"
+            value={maxPrice || 1500000}
             onChange={(event) => setMaxPrice(event.target.value)}
-          />
+        />
         </label>
+
       </div>
 
       <div>
         <label>
-          Minimum Bedrooms:
-          <input
-            type="number"
+        Minimum Bedrooms:
+        <select
             value={minBedrooms}
             onChange={(event) => setMinBedrooms(event.target.value)}
-          />
+        >
+            <option value="">Any</option>
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+            <option value="5">5+</option>
+        </select>
         </label>
       </div>
 
       <div>
         <label>
-          Maximum Bedrooms:
-          <input
-            type="number"
+        Maximum Bedrooms:
+        <select
             value={maxBedrooms}
             onChange={(event) => setMaxBedrooms(event.target.value)}
-          />
+        >
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
         </label>
       </div>
 

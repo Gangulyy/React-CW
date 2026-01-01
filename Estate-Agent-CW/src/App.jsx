@@ -4,6 +4,7 @@ import { useState } from 'react';
 import PropertyDetails from './components/PropertyDetails';
 import SearchForm from './components/SearchForm';
 import PropertyList from './components/PropertyList';
+import FavouritesList from './components/FavouritesList';
 
 
 
@@ -21,6 +22,8 @@ function App() {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState('description');
+  const [favourites, setFavourites] = useState([]);
+
 
 
 const filteredProperties = properties.filter((property) => {
@@ -75,6 +78,13 @@ const filteredProperties = properties.filter((property) => {
 
   return true;
 });
+
+
+
+function clearFavourites() {
+  setFavourites([]);
+}
+
    
   // inputs
   return (
@@ -103,20 +113,27 @@ const filteredProperties = properties.filter((property) => {
 
 
 
-
-
-
-
-
       {selectedProperty === null ? (
-        <PropertyList
-          properties={filteredProperties}
-          onSelect={(property) => {
-            setSelectedProperty(property);
-            setSelectedImage(0);
-            setActiveTab('description');
-          }}
-        />
+        <>
+          <FavouritesList
+            favourites={favourites}
+            onSelect={(property) => {
+              setSelectedProperty(property);
+              setSelectedImage(0);
+              setActiveTab('description');
+            }}
+            clearFavourites={clearFavourites}
+          />
+
+          <PropertyList
+            properties={filteredProperties}
+            onSelect={(property) => {
+              setSelectedProperty(property);
+              setSelectedImage(0);
+              setActiveTab('description');
+            }}
+          />
+        </>
       ) : (
         <PropertyDetails
           property={selectedProperty}
@@ -124,9 +141,12 @@ const filteredProperties = properties.filter((property) => {
           setSelectedImage={setSelectedImage}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
+          favourites={favourites}
+          setFavourites={setFavourites}
           onBack={() => setSelectedProperty(null)}
         />
       )}
+
 
 
 

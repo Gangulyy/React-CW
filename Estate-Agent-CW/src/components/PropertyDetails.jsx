@@ -1,10 +1,14 @@
+import FavouriteButton from './FavouriteButton';
+
 function PropertyDetails({
   property,
   selectedImage,
   setSelectedImage,
   activeTab,
   setActiveTab,
-  onBack
+  onBack,
+  favourites,
+  setFavourites
 }) {
   return (
     <div>
@@ -58,6 +62,13 @@ function PropertyDetails({
       <p><strong>Price:</strong> £{property.price}</p>
       <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
       <p><strong>Location:</strong> {property.location}</p>
+
+      <FavouriteButton
+      property={property}
+      favourites={favourites}
+      setFavourites={setFavourites}
+      />
+
 
       {/* Tabs content */}
       {activeTab === 'description' && (

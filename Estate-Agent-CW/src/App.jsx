@@ -1,6 +1,11 @@
 import './App.css';
 import propertiesData from './data/properties.json';
 import { useState } from 'react';
+import PropertyDetails from './components/PropertyDetails';
+import SearchForm from './components/SearchForm';
+import PropertyList from './components/PropertyList';
+
+
 
 function App() {
 
@@ -14,205 +19,89 @@ function App() {
   const [addedBefore, setAddedBefore] = useState('');
   const [postcode, setPostcode] = useState('');
   const [selectedProperty, setSelectedProperty] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [activeTab, setActiveTab] = useState('description');
 
 
+const filteredProperties = properties.filter((property) => {
 
-
-  // empty list to store what we want to show
-  const propertyElements = [];
-
-  // Normal for loop
-  for (let i = 0; i < properties.length; i++) {
-
-    const property = properties[i];
-
-    // filter by type
-    if (selectedType !== '' && property.type !== selectedType) {
-      continue;
-    }
-
-    // filter by minimum price
-    if (minPrice !== '' && property.price < Number(minPrice)) {
-      continue;
-    }
-
-    // filter by maximum price
-    if (maxPrice !== '' && property.price > Number(maxPrice)) {
-      continue;
-    }
-
-
-    // filter by minimum bedrooms
-    if (minBedrooms !== '' && property.bedrooms < Number(minBedrooms)) {
-      continue;
-    }
-
-    // filter by maximum bedrooms
-    if (maxBedrooms !== '' && property.bedrooms > Number(maxBedrooms)) {
-      continue;
-    }
-
-    // filter by postcode area
-    if (postcode !== '' && !property.location.toUpperCase().includes(postcode.toUpperCase())) {
-      continue;
-    }
-
-    // filter by date added (before selected date)
-    if (addedBefore !== '') {
-
-      const propertyDate = new Date(
-        property.added.year,
-        new Date(Date.parse(property.added.month + " 1, " + property.added.year)).getMonth(),
-        property.added.day
-      );
-
-      const selectedBeforeDate = new Date(addedBefore);
-
-      if (propertyDate > selectedBeforeDate) {
-        continue;
-      }
-    }
-
-
-    // filter by date added (after selected date)
-    if (addedAfter !== '') {
-
-      const propertyDate = new Date(
-        property.added.year,
-        new Date(Date.parse(property.added.month + " 1," + property.added.year)).getMonth(),
-        property.added.day
-      );
-
-      const selectedDate = new Date(addedAfter);
-
-      if (propertyDate < selectedDate) {
-        continue;
-      }
-    }
-
-
-//make each card cickable
-    propertyElements.push(
-      <div 
-        key={property.id}
-        onClick={() => setSelectedProperty(property)}
-        style={{
-          border: '1px solid #ccc',
-          padding: '15px',
-          marginBottom: '20px', 
-          cursor: 'pointer'
-        }}
-      >
-        <img
-          src={property.picture}
-          alt="Property"
-          style={{ width: '100%', maxWidth: '300px' }}
-        />
-        
-        <h3>{property.type}</h3>
-        <p>Price: £{property.price}</p>
-        <p>Bedrooms: {property.bedrooms}</p>
-        <p>Location: {property.location}</p>
-      </div>
-    );
+  if (selectedType !== '' && property.type !== selectedType) {
+    return false;
   }
+
+  if (minPrice !== '' && property.price < Number(minPrice)) {
+    return false;
+  }
+
+  if (maxPrice !== '' && property.price > Number(maxPrice)) {
+    return false;
+  }
+
+  if (minBedrooms !== '' && property.bedrooms < Number(minBedrooms)) {
+    return false;
+  }
+
+  if (maxBedrooms !== '' && property.bedrooms > Number(maxBedrooms)) {
+    return false;
+  }
+
+  if (postcode !== '' && !property.location.toUpperCase().includes(postcode.toUpperCase())) {
+    return false;
+  }
+
+  if (addedBefore !== '') {
+    const propertyDate = new Date(
+      property.added.year,
+      new Date(Date.parse(property.added.month + " 1, " + property.added.year)).getMonth(),
+      property.added.day
+    );
+
+    if (propertyDate > new Date(addedBefore)) {
+      return false;
+    }
+  }
+
+  if (addedAfter !== '') {
+    const propertyDate = new Date(
+      property.added.year,
+      new Date(Date.parse(property.added.month + " 1," + property.added.year)).getMonth(),
+      property.added.day
+    );
+
+    if (propertyDate < new Date(addedAfter)) {
+      return false;
+    }
+  }
+
+  return true;
+});
    
   // inputs
   return (
 
     <div>
       <h1>Estate Agent App</h1>
-      <label>
-        Property Type:
-        <select
-          value={selectedType}
-          onChange={(event) => setSelectedType(event.target.value)}
-        >
-          <option value="">Any</option>
-          <option value="House">House</option>
-          <option value="Flat">Flat</option>
-        </select>
-      </label>
 
-
-    <div>
-      <label>
-        Minimum Price:
-        <input
-          type="number"
-          value={minPrice}
-          onChange={(event) => setMinPrice(event.target.value)}
-        />
-      </label>
-
-
-
-      <label>
-        Maximum Price:
-        <input
-          type="number"
-          value={maxPrice}
-          onChange={(event) => setMaxPrice(event.target.value)}
-        />
-      </label>
-    </div>
-
-
-    <div>
-      <label>
-        Minimum Bedrooms:
-        <input
-          type="number"
-          value={minBedrooms}
-          onChange={(event) => setMinBedrooms(event.target.value)}
-        />
-      </label>
-    </div>
-
-
-    <div>
-      <label>
-        Maximum Bedrooms:
-        <input
-          type="number"
-          value={maxBedrooms}
-          onChange={(event) => setMaxBedrooms(event.target.value)}
-        />
-      </label>
-    </div>
-
-    <div>
-      <label>
-        Date From:
-        <input
-          type="date"
-          value={addedAfter}
-          onChange={(event) => setAddedAfter(event.target.value)}
-        />
-      </label>
-    </div>
-
-    <label>
-      Date To:
-      <input
-        type="date"
-        value={addedBefore}
-        onChange={(event) => setAddedBefore(event.target.value)}
+      <SearchForm
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+        minPrice={minPrice}
+        setMinPrice={setMinPrice}
+        maxPrice={maxPrice}
+        setMaxPrice={setMaxPrice}
+        minBedrooms={minBedrooms}
+        setMinBedrooms={setMinBedrooms}
+        maxBedrooms={maxBedrooms}
+        setMaxBedrooms={setMaxBedrooms}
+        addedAfter={addedAfter}
+        setAddedAfter={setAddedAfter}
+        addedBefore={addedBefore}
+        setAddedBefore={setAddedBefore}
+        postcode={postcode}
+        setPostcode={setPostcode}
       />
-    </label>
 
 
-    <div>
-      <label>
-        Postcode Area:
-        <input
-          type="text"
-          value={postcode}
-          onChange={(event) => setPostcode(event.target.value)}
-          placeholder="Ex: BR1, NW1"
-        />
-      </label>
-    </div>
 
 
 
@@ -220,29 +109,26 @@ function App() {
 
 
       {selectedProperty === null ? (
-        propertyElements
-      ):(
-      <div>
-        <h2>Property Details</h2>
-
-        <img
-          src={selectedProperty.picture}
-          alt="Property"
-          style={{ width: '300px' }}
+        <PropertyList
+          properties={filteredProperties}
+          onSelect={(property) => {
+            setSelectedProperty(property);
+            setSelectedImage(0);
+            setActiveTab('description');
+          }}
         />
-
-        <p><strong>Type:</strong> {selectedProperty.type}</p>
-        <p><strong>Price:</strong> £{selectedProperty.price}</p>
-        <p><strong>Bedrooms:</strong> {selectedProperty.bedrooms}</p>
-        <p><strong>Location:</strong> {selectedProperty.location}</p>
-        <p>{selectedProperty.description}</p>
-
-        <button onClick={() => setSelectedProperty(null)}>
-          Back to Search
-        </button>
-      </div>
-
+      ) : (
+        <PropertyDetails
+          property={selectedProperty}
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          onBack={() => setSelectedProperty(null)}
+        />
       )}
+
+
 
     </div>
   );

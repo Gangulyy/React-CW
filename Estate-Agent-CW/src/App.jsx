@@ -13,6 +13,8 @@ function App() {
   const [addedAfter, setAddedAfter] = useState('');
   const [addedBefore, setAddedBefore] = useState('');
   const [postcode, setPostcode] = useState('');
+  const [selectedProperty, setSelectedProperty] = useState(null);
+
 
 
 
@@ -50,20 +52,36 @@ function App() {
       continue;
     }
 
+    // filter by postcode area
+    if (postcode !== '' && !property.location.toUpperCase().includes(postcode.toUpperCase())) {
+      continue;
+    }
+
+    // filter by date added (before selected date)
+    if (addedBefore !== '') {
+
+      const propertyDate = new Date(
+        property.added.year,
+        new Date(Date.parse(property.added.month + " 1, " + property.added.year)).getMonth(),
+        property.added.day
+      );
+
+      const selectedBeforeDate = new Date(addedBefore);
+
+      if (propertyDate > selectedBeforeDate) {
+        continue;
+      }
+    }
+
+
     // filter by date added (after selected date)
     if (addedAfter !== '') {
 
       const propertyDate = new Date(
         property.added.year,
-        new Date(Date.parse(property.added.month + " 1, 2022")).getMonth(),
+        new Date(Date.parse(property.added.month + " 1," + property.added.year)).getMonth(),
         property.added.day
       );
-
-      // filter by postcode area
-    if (postcode !== '' && !property.location.toUpperCase().includes(postcode.toUpperCase())) {
-      continue;
-    }
-
 
       const selectedDate = new Date(addedAfter);
 
@@ -73,16 +91,16 @@ function App() {
     }
 
 
-
-
-
+//make each card cickable
     propertyElements.push(
       <div 
-        key={property.id} 
+        key={property.id}
+        onClick={() => setSelectedProperty(property)}
         style={{
           border: '1px solid #ccc',
           padding: '15px',
-          marginBottom: '20px' 
+          marginBottom: '20px', 
+          cursor: 'pointer'
         }}
       >
         <img
@@ -201,7 +219,31 @@ function App() {
 
 
 
-      {propertyElements}
+      {selectedProperty === null ? (
+        propertyElements
+      ):(
+      <div>
+        <h2>Property Details</h2>
+
+        <img
+          src={selectedProperty.picture}
+          alt="Property"
+          style={{ width: '300px' }}
+        />
+
+        <p><strong>Type:</strong> {selectedProperty.type}</p>
+        <p><strong>Price:</strong> £{selectedProperty.price}</p>
+        <p><strong>Bedrooms:</strong> {selectedProperty.bedrooms}</p>
+        <p><strong>Location:</strong> {selectedProperty.location}</p>
+        <p>{selectedProperty.description}</p>
+
+        <button onClick={() => setSelectedProperty(null)}>
+          Back to Search
+        </button>
+      </div>
+
+      )}
+
     </div>
   );
 }

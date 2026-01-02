@@ -181,6 +181,19 @@ const styles = {
     transition: 'border-color 0.2s',
     outline: 'none'
   },
+  range: {
+    width: '100%',
+    height: '6px',
+    background: '#e2e8f0',
+    borderRadius: '3px',
+    outline: 'none',
+    cursor: 'pointer'
+  },
+  rangeValue: {
+    fontWeight: '700',
+    color: '#2563eb',
+    float: 'right'
+  }
   
 };
 

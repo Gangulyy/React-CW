@@ -64,78 +64,51 @@ function PropertyDetails({
             favourites={favourites}
             setFavourites={setFavourites}
           />
+
           {/* Tabs */}
-          <div>
-            <button onClick={() => setActiveTab('description')}>
+          <div style={styles.tabs}>
+            <button 
+              onClick={() => setActiveTab('description')}
+              style={activeTab === 'description' ? styles.tabActive : styles.tab}
+            >
               Description
             </button>
 
-            <button onClick={() => setActiveTab('floorplan')}>
+            <button 
+              onClick={() => setActiveTab('floorplan')}
+              style={activeTab === 'floorplan' ? styles.tabActive : styles.tab}
+            >
               Floor Plan
             </button>
 
-            <button onClick={() => setActiveTab('map')}>
+            <button 
+              onClick={() => setActiveTab('map')}
+              style={activeTab === 'map' ? styles.tabActive : styles.tab}
+            >
               Map
             </button>
           </div>
 
-          {/* Main image */}
-          <img
-            src={property.pictures[selectedImage]}
-            alt="Property"
-            style={{ width: '300px', maxWidth: '400px' }}
-          />
-
-          {/* Thumbnails */}
-          <div>
-            {property.pictures.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt="Thumbnail"
-                style={{
-                  width: '60px',
-                  marginRight: '10px',
-                  cursor: 'pointer',
-                  border:
-                    selectedImage === index
-                      ? '2px solid black'
-                      : '1px solid #ccc'
-                }}
-                onClick={() => setSelectedImage(index)}
-              />
-            ))}
-          </div>
-
-          {/* Property info */}
-          <p><strong>Type:</strong> {property.type}</p>
-          <p><strong>Price:</strong> £{property.price}</p>
-          <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
-          <p><strong>Location:</strong> {property.location}</p>
-
-          <FavouriteButton
-          property={property}
-          favourites={favourites}
-          setFavourites={setFavourites}
-          />
-
-
           {/* Tabs content */}
-          {activeTab === 'description' && (
-            <p>{property.description}</p>
-          )}
+          <div style={styles.tabContent}>
+            {activeTab === 'description' && (
+              <p style={styles.description}>{property.description}</p>
+            )}
 
-          {activeTab === 'floorplan' && (
-            <div>
-              <p>Floor plan will be shown here.</p>
-            </div>
-          )}
+            {activeTab === 'floorplan' && (
+              <div style={styles.placeholder}>
+                <div style={styles.placeholderIcon}>📐</div>
+                <p>Floor plan will be shown here</p>
+              </div>
+            )}
 
-          {activeTab === 'map' && (
-            <div>
-              <p>Map will be shown here.</p>
-            </div>
-          )}
+            {activeTab === 'map' && (
+              <div style={styles.placeholder}>
+                <div style={styles.placeholderIcon}>🗺️</div>
+                <p>Map will be shown here</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -169,6 +142,18 @@ const styles = {
       gridTemplateColumns: '1fr'
     }
   },
+  imageSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px'
+  },
+  mainImage: {
+    width: '100%',
+    height: '400px',
+    objectFit: 'cover',
+    borderRadius: '12px',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+  },
   thumbnailContainer: {
     display: 'flex',
     gap: '12px',
@@ -182,6 +167,11 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.2s'
   },
+  detailsSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px'
+  }
 };
 
 export default PropertyDetails;

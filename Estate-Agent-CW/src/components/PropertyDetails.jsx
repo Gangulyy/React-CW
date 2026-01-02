@@ -171,7 +171,23 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '20px'
-  }
+  },
+  heading: {
+    fontSize: '2rem',
+    fontWeight: '700',
+    color: '#1e293b',
+    margin: 0
+  },
+  priceTag: {
+    fontSize: '1.75rem',
+    fontWeight: '700',
+    color: '#2563eb',
+    padding: '12px 20px',
+    background: '#eff6ff',
+    borderRadius: '8px',
+    display: 'inline-block',
+    width: 'fit-content'
+  },
 };
 
 export default PropertyDetails;

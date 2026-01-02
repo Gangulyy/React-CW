@@ -12,6 +12,10 @@ function PropertyDetails({
 }) {
   return (
     <div style={styles.container}>
+      <button onClick={onBack} style={styles.backButton}>
+        ← Back to Search
+      </button>
+      
       <h2>Property Details</h2>
 
       {/* Tabs */}
@@ -87,9 +91,7 @@ function PropertyDetails({
         </div>
       )}
 
-      <button onClick={onBack}>
-        Back to Search
-      </button>
+
     </div>
   );
 }

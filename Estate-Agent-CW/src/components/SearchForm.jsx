@@ -194,7 +194,6 @@ const styles = {
     color: '#2563eb',
     float: 'right'
   }
-  
 };
 
 export default SearchForm;

@@ -15,8 +15,7 @@ function PropertyDetails({
       <button onClick={onBack} style={styles.backButton}>
         ← Back to Search
       </button>
-      
-      <h2>Property Details</h2>
+
 
       {/* Tabs */}
       <div>
@@ -103,6 +102,19 @@ const styles = {
     padding: '24px',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
   },
+  backButton: {
+    padding: '10px 20px',
+    fontSize: '1rem',
+    fontWeight: '600',
+    color: '#64748b',
+    background: 'white',
+    border: '2px solid #e2e8f0',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    marginBottom: '24px'
+  },
+
 };
 
 export default PropertyDetails;

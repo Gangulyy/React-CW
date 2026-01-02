@@ -22,15 +22,15 @@ function SearchForm({
 
       <div style={styles.formGroup}>
         <label style={styles.label}>Property Type</label>
-          <select
-            style={styles.select}
-            value={selectedType}
-            onChange={(event) => setSelectedType(event.target.value)}
-          >
-            <option value="">Any</option>
-            <option value="House">House</option>
-            <option value="Flat">Flat</option>
-          </select>
+        <select
+          style={styles.select}
+          value={selectedType}
+          onChange={(event) => setSelectedType(event.target.value)}
+        >
+          <option value="">Any</option>
+          <option value="House">House</option>
+          <option value="Flat">Flat</option>
+        </select>
       </div>
 
       <div style={styles.formGroup}>
@@ -136,11 +136,10 @@ const styles = {
     padding: '24px',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
     position: 'sticky',
-    top: '20px',  
+    top: '20px',
     maxHeight: 'calc(100vh - 40px)',
     overflowY: 'auto'
   },
-
   heading: {
     fontSize: '1.5rem',
     fontWeight: '700',
@@ -171,8 +170,18 @@ const styles = {
     transition: 'border-color 0.2s',
     outline: 'none'
   },
-
-
+  input: {
+    width: '100%',
+    padding: '10px 12px',
+    fontSize: '1rem',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    backgroundColor: 'white',
+    color: '#1e293b',
+    transition: 'border-color 0.2s',
+    outline: 'none'
+  },
+  
 };
 
 export default SearchForm;

@@ -188,12 +188,12 @@ const styles = {
     display: 'inline-block',
     width: 'fit-content'
   },
-    infoGrid: {
+  infoGrid: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gap: '16px'
   },
-    infoItem: {
+  infoItem: {
     padding: '16px',
     background: '#f8fafc',
     borderRadius: '8px',
@@ -242,6 +242,21 @@ const styles = {
   tabContent: {
     padding: '20px 0'
   },
+  description: {
+    fontSize: '1rem',
+    lineHeight: '1.6',
+    color: '#475569'
+  },
+  placeholder: {
+    textAlign: 'center',
+    padding: '40px',
+    color: '#94a3b8'
+  },
+  placeholderIcon: {
+    fontSize: '3rem',
+    marginBottom: '16px',
+    opacity: 0.5
+  }
 };
 
 export default PropertyDetails;

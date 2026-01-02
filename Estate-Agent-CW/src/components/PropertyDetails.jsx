@@ -216,6 +216,32 @@ const styles = {
     borderBottom: '2px solid #e2e8f0',
     marginTop: '16px'
   },
+  tab: {
+    padding: '12px 20px',
+    fontSize: '1rem',
+    fontWeight: '600',
+    color: '#64748b',
+    background: 'transparent',
+    border: 'none',
+    borderBottom: '2px solid transparent',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    marginBottom: '-2px'
+  },
+  tabActive: {
+    padding: '12px 20px',
+    fontSize: '1rem',
+    fontWeight: '600',
+    color: '#2563eb',
+    background: 'transparent',
+    border: 'none',
+    borderBottom: '2px solid #2563eb',
+    cursor: 'pointer',
+    marginBottom: '-2px'
+  },
+  tabContent: {
+    padding: '20px 0'
+  },
 };
 
 export default PropertyDetails;

@@ -4,13 +4,15 @@ function PropertyList({ properties, onSelect }) {
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Available Properties ({properties.length})</h2>
-      {properties.map((property) => (
-        <PropertyCard
-          key={property.id}
-          property={property}
-          onSelect={onSelect}
-        />
-      ))}
+      <div style={styles.grid}>
+        {properties.map((property) => (
+          <PropertyCard
+            key={property.id}
+            property={property}
+            onSelect={onSelect}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -30,6 +32,11 @@ const styles = {
     borderBottom: '2px solid #10b981',
     paddingBottom: '12px'
   },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '20px'
+  }
 };
 
 export default PropertyList;

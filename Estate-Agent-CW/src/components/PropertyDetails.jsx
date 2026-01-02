@@ -42,6 +42,28 @@ function PropertyDetails({
           </div>
         </div>
 
+        {/* Property Details */}
+        <div style={styles.detailsSection}>
+          <h2 style={styles.heading}>{property.type}</h2>
+          
+          <div style={styles.priceTag}>£{property.price.toLocaleString()}</div>
+
+          <div style={styles.infoGrid}>
+            <div style={styles.infoItem}>
+              <div style={styles.infoLabel}>Bedrooms</div>
+              <div style={styles.infoValue}>🛏️ {property.bedrooms}</div>
+            </div>
+            <div style={styles.infoItem}>
+              <div style={styles.infoLabel}>Location</div>
+              <div style={styles.infoValue}>📍 {property.location}</div>
+            </div>
+          </div>
+
+          <FavouriteButton
+            property={property}
+            favourites={favourites}
+            setFavourites={setFavourites}
+          />
           {/* Tabs */}
           <div>
             <button onClick={() => setActiveTab('description')}>
@@ -114,7 +136,7 @@ function PropertyDetails({
               <p>Map will be shown here.</p>
             </div>
           )}
-
+        </div>
       </div>
     </div>
   );

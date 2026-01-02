@@ -17,26 +17,23 @@
 
 }
 
-
-button {
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
 /*-----Responsive Layout */
-.search-layout {
+.searchLayout {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 20px;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
 }
 
 /*-----Property Cards */
 .property-card {
-  background-color: #ffffff;
-  border-radius: 6px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
 }
 
 /* ------Mobile*/

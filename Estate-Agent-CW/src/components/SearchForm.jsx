@@ -22,8 +22,8 @@ function SearchForm({
 
       <div style={styles.formGroup}>
         <label style={styles.label}>Property Type</label>
-          Property Type:
           <select
+            style={styles.select}
             value={selectedType}
             onChange={(event) => setSelectedType(event.target.value)}
           >
@@ -34,9 +34,11 @@ function SearchForm({
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-        Minimum Price (£{minPrice || 0})
+        <label style={styles.label}>
+          Minimum Price: <span style={styles.rangeValue}>£{(minPrice || 0).toLocaleString()}</span>
+        </label>
         <input
+            style={styles.range}
             type="range"
             min="0"
             max="1500000"
@@ -44,13 +46,14 @@ function SearchForm({
             value={minPrice || 0}
             onChange={(event) => setMinPrice(event.target.value)}
         />
-        </label>
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-        Maximum Price (£{maxPrice || 1500000})
+        <label style={styles.label}>
+          Maximum Price: <span style={styles.rangeValue}>£{(maxPrice || 1500000).toLocaleString()}</span>
+        </label>
         <input
+            style={styles.range}
             type="range"
             min="0"
             max="1500000"
@@ -58,13 +61,12 @@ function SearchForm({
             value={maxPrice || 1500000}
             onChange={(event) => setMaxPrice(event.target.value)}
         />
-        </label>
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-        Minimum Bedrooms:
+        <label style={styles.label}>Minimum Bedrooms</label>
         <select
+            style={styles.select}
             value={minBedrooms}
             onChange={(event) => setMinBedrooms(event.target.value)}
         >
@@ -75,13 +77,12 @@ function SearchForm({
             <option value="4">4+</option>
             <option value="5">5+</option>
         </select>
-        </label>
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-        Maximum Bedrooms:
+        <label style={styles.label}>Maximum Bedrooms</label>
         <select
+            style={styles.select}
             value={maxBedrooms}
             onChange={(event) => setMaxBedrooms(event.target.value)}
         >
@@ -92,41 +93,37 @@ function SearchForm({
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
-        </label>
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-          Date From:
-          <input
+        <label style={styles.label}>Date From</label>
+        <input
+            style={styles.input}
             type="date"
             value={addedAfter}
             onChange={(event) => setAddedAfter(event.target.value)}
           />
-        </label>
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-          Date To:
-          <input
+        <label style={styles.label}>Date To</label>
+        <input
+            style={styles.input}
             type="date"
             value={addedBefore}
             onChange={(event) => setAddedBefore(event.target.value)}
           />
-        </label>
       </div>
 
       <div style={styles.formGroup}>
-        <label>
-          Postcode Area:
-          <input
+        <label style={styles.label}>Postcode Area</label>
+        <input
+            style={styles.input}
             type="text"
             value={postcode}
             onChange={(event) => setPostcode(event.target.value)}
-            placeholder="Ex: BR1, NW1"
+            placeholder="e.g., BR1, NW1"
           />
-        </label>
       </div>
     </div>
   );

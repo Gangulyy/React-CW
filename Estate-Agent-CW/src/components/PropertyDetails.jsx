@@ -11,7 +11,7 @@ function PropertyDetails({
   setFavourites
 }) {
   return (
-    <div>
+    <div style={styles.container}>
       <h2>Property Details</h2>
 
       {/* Tabs */}
@@ -93,5 +93,14 @@ function PropertyDetails({
     </div>
   );
 }
+
+const styles = {
+  container: {
+    background: 'white',
+    borderRadius: '12px',
+    padding: '24px',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+  },
+};
 
 export default PropertyDetails;

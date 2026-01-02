@@ -188,6 +188,11 @@ const styles = {
     display: 'inline-block',
     width: 'fit-content'
   },
+    infoGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '16px'
+  },
 };
 
 export default PropertyDetails;

@@ -17,7 +17,7 @@ function SearchForm({
   setPostcode
 }) {
   return (
-    <div>
+    <div style={styles.container}>
       <h2>Search Properties</h2>
 
       <label>
@@ -130,5 +130,18 @@ function SearchForm({
     </div>
   );
 }
+
+const styles = {
+  container: {
+    background: 'white',
+    borderRadius: '12px',
+    padding: '24px',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    position: 'sticky',
+    top: '20px',  
+    maxHeight: 'calc(100vh - 40px)',
+    overflowY: 'auto'
+  },
+};
 
 export default SearchForm;

@@ -18,8 +18,9 @@ function SearchForm({
 }) {
   return (
     <div style={styles.container}>
-      <h2>Search Properties</h2>
+      <h2 style={styles.heading}>Search Properties</h2>
 
+  
       <label>
         Property Type:
         <select
@@ -142,6 +143,17 @@ const styles = {
     maxHeight: 'calc(100vh - 40px)',
     overflowY: 'auto'
   },
+
+  heading: {
+    fontSize: '1.5rem',
+    fontWeight: '700',
+    color: '#1e293b',
+    marginBottom: '20px',
+    borderBottom: '2px solid #2563eb',
+    paddingBottom: '12px'
+  },
+
+
 };
 
 export default SearchForm;

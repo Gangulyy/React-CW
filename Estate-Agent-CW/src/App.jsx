@@ -112,41 +112,41 @@ function clearFavourites() {
         setPostcode={setPostcode}
       />
 
+      <div>
+        {selectedProperty === null ? (
+          <>
+            <FavouritesList
+              favourites={favourites}
+              onSelect={(property) => {
+                setSelectedProperty(property);
+                setSelectedImage(0);
+                setActiveTab('description');
+              }}
+              clearFavourites={clearFavourites}
+            />
 
-
-      {selectedProperty === null ? (
-        <>
-          <FavouritesList
+            <PropertyList
+              properties={filteredProperties}
+              onSelect={(property) => {
+                setSelectedProperty(property);
+                setSelectedImage(0);
+                setActiveTab('description');
+              }}
+            />
+          </>
+        ) : (
+          <PropertyDetails
+            property={selectedProperty}
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
             favourites={favourites}
-            onSelect={(property) => {
-              setSelectedProperty(property);
-              setSelectedImage(0);
-              setActiveTab('description');
-            }}
-            clearFavourites={clearFavourites}
+            setFavourites={setFavourites}
+            onBack={() => setSelectedProperty(null)}
           />
-
-          <PropertyList
-            properties={filteredProperties}
-            onSelect={(property) => {
-              setSelectedProperty(property);
-              setSelectedImage(0);
-              setActiveTab('description');
-            }}
-          />
-        </>
-      ) : (
-        <PropertyDetails
-          property={selectedProperty}
-          selectedImage={selectedImage}
-          setSelectedImage={setSelectedImage}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          favourites={favourites}
-          setFavourites={setFavourites}
-          onBack={() => setSelectedProperty(null)}
-        />
-      )}
+        )}
+      </div>
       </div>
 
 

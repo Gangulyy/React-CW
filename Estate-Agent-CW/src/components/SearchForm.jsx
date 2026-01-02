@@ -20,19 +20,19 @@ function SearchForm({
     <div style={styles.container}>
       <h2 style={styles.heading}>Search Properties</h2>
 
-  
-      <label>
-        Property Type:
-        <select
-          value={selectedType}
-          onChange={(event) => setSelectedType(event.target.value)}
-        >
-          <option value="">Any</option>
-          <option value="House">House</option>
-          <option value="Flat">Flat</option>
-        </select>
-      </label>
-
+      <div style={styles.formGroup}>
+        <label>
+          Property Type:
+          <select
+            value={selectedType}
+            onChange={(event) => setSelectedType(event.target.value)}
+          >
+            <option value="">Any</option>
+            <option value="House">House</option>
+            <option value="Flat">Flat</option>
+          </select>
+        </label>
+      </div>
       <div>
         <label>
         Minimum Price (£{minPrice || 0})
@@ -151,6 +151,9 @@ const styles = {
     marginBottom: '20px',
     borderBottom: '2px solid #2563eb',
     paddingBottom: '12px'
+  },
+    formGroup: {
+    marginBottom: '20px'
   },
 
 

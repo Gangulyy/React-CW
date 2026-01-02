@@ -210,6 +210,12 @@ const styles = {
     color: '#1e293b',
     fontWeight: '600'
   },
+  tabs: {
+    display: 'flex',
+    gap: '8px',
+    borderBottom: '2px solid #e2e8f0',
+    marginTop: '16px'
+  },
 };
 
 export default PropertyDetails;

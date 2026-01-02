@@ -21,7 +21,7 @@ function SearchForm({
       <h2 style={styles.heading}>Search Properties</h2>
 
       <div style={styles.formGroup}>
-        <label>
+        <label style={styles.label}>Property Type</label>
           Property Type:
           <select
             value={selectedType}
@@ -31,9 +31,9 @@ function SearchForm({
             <option value="House">House</option>
             <option value="Flat">Flat</option>
           </select>
-        </label>
       </div>
-      <div>
+
+      <div style={styles.formGroup}>
         <label>
         Minimum Price (£{minPrice || 0})
         <input
@@ -45,8 +45,9 @@ function SearchForm({
             onChange={(event) => setMinPrice(event.target.value)}
         />
         </label>
+      </div>
 
-
+      <div style={styles.formGroup}>
         <label>
         Maximum Price (£{maxPrice || 1500000})
         <input
@@ -58,10 +59,9 @@ function SearchForm({
             onChange={(event) => setMaxPrice(event.target.value)}
         />
         </label>
-
       </div>
 
-      <div>
+      <div style={styles.formGroup}>
         <label>
         Minimum Bedrooms:
         <select
@@ -78,7 +78,7 @@ function SearchForm({
         </label>
       </div>
 
-      <div>
+      <div style={styles.formGroup}>
         <label>
         Maximum Bedrooms:
         <select
@@ -95,7 +95,7 @@ function SearchForm({
         </label>
       </div>
 
-      <div>
+      <div style={styles.formGroup}>
         <label>
           Date From:
           <input
@@ -106,7 +106,7 @@ function SearchForm({
         </label>
       </div>
 
-      <div>
+      <div style={styles.formGroup}>
         <label>
           Date To:
           <input
@@ -117,7 +117,7 @@ function SearchForm({
         </label>
       </div>
 
-      <div>
+      <div style={styles.formGroup}>
         <label>
           Postcode Area:
           <input
@@ -154,6 +154,13 @@ const styles = {
   },
     formGroup: {
     marginBottom: '20px'
+  },
+    label: {
+    display: 'block',
+    fontSize: '0.875rem',
+    fontWeight: '600',
+    color: '#475569',
+    marginBottom: '8px'
   },
 
 

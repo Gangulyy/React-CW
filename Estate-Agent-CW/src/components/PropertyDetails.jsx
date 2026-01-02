@@ -193,6 +193,23 @@ const styles = {
     gridTemplateColumns: '1fr 1fr',
     gap: '16px'
   },
+    infoItem: {
+    padding: '16px',
+    background: '#f8fafc',
+    borderRadius: '8px',
+    border: '1px solid #e2e8f0'
+  },
+  infoLabel: {
+    fontSize: '0.875rem',
+    color: '#64748b',
+    marginBottom: '4px',
+    fontWeight: '500'
+  },
+  infoValue: {
+    fontSize: '1.125rem',
+    color: '#1e293b',
+    fontWeight: '600'
+  },
 };
 
 export default PropertyDetails;

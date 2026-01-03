@@ -65,6 +65,20 @@ const styles = {
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
     marginBottom: '24px'
   },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '20px',
+    flexWrap: 'wrap',
+    gap: '12px'
+  },
+  heading: {
+    fontSize: '1.5rem',
+    fontWeight: '700',
+    color: '#1e293b',
+    margin: 0
+  },
 };
 
 export default FavouritesList;

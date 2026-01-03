@@ -5,6 +5,7 @@ function FavouritesList({ favourites, onSelect, clearFavourites }) {
   if (favourites.length === 0) {
     return (
       <div style={styles.emptyContainer}>
+        <div style={styles.emptyIcon}>♥️</div>
       
       </div>
     );
@@ -37,6 +38,11 @@ const styles = {
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
     marginBottom: '24px'
+  },
+  emptyIcon: {
+    fontSize: '3rem',
+    marginBottom: '16px',
+    opacity: 0.3
   },
 };
 

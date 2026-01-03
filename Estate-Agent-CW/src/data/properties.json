@@ -56,7 +56,7 @@
             "bedrooms":4,
             "price":925000,
             "tenure":"Freehold",
-            "description":"Spacious four bedroom detached house located in a quiet residential neighbourhood. The property features a large living room, modern fitted kitchen, dining area, and a private garden. Ideal for families looking for extra space and comfort.",
+            "description": "This spacious four bedroom detached house is located in a quiet and well-established residential neighbourhood, offering an ideal living environment for growing families. The property features a generously sized living room, a modern fitted kitchen with ample storage, a separate dining area, and a well-maintained private garden. Each bedroom is well-proportioned, providing comfortable personal space, while the overall layout ensures excellent natural light and ventilation throughout the home.\n\nSituated within close proximity to reputable schools, local shops, and essential amenities, this property offers both convenience and comfort. Excellent transport links provide easy access to nearby town centres and commuter routes, making it suitable for professionals as well as families. The peaceful surroundings combined with practical living spaces make this home a strong long-term investment opportunity.",
             "location":"Maple Avenue, Bromley BR1",
 			"pictures": [
                 "/images/ThirdImage1.png",
@@ -81,7 +81,7 @@
             "bedrooms":1,
             "price":275000,
             "tenure":"Leasehold",
-            "description":"Well-presented one bedroom apartment situated close to local amenities and transport links. The property includes an open-plan kitchen and living area, a modern bathroom, and a spacious bedroom.",
+            "description": "This well-presented one bedroom apartment is ideally located close to a wide range of local amenities and transport links, making it perfect for first-time buyers or investors. The property features a bright open-plan living and kitchen area, a modern fitted bathroom, and a spacious bedroom designed for comfortable everyday living. The apartment is finished to a good standard throughout and benefits from an efficient layout that maximises available space.\n\nThe surrounding area offers excellent access to public transport, shopping facilities, and dining options, ensuring a convenient urban lifestyle. With its central location and low-maintenance appeal, this property represents an excellent opportunity for those seeking a practical and affordable home in a well-connected area.",
             "location":"High Street, Croydon CR0",
 			"pictures": [
                 "/images/FourthImage1.jpg",
@@ -106,7 +106,7 @@
             "bedrooms":5,
             "price":1250000,
             "tenure":"Freehold",
-            "description":"Impressive five bedroom luxury home offering generous living space across two floors. Features include multiple reception rooms, a high-end kitchen, landscaped garden, and private driveway.",
+            "description": "This impressive five bedroom luxury home offers extensive living space across two well-designed floors, making it ideal for larger families or those seeking premium accommodation. The property boasts multiple reception rooms, a high-end fitted kitchen with quality appliances, and a beautifully landscaped garden suitable for both relaxation and entertaining. The interior design reflects a high standard of finish with attention to detail throughout.\n\nLocated in a highly desirable residential area, the property benefits from excellent transport links, reputable schools, and nearby recreational facilities. The combination of generous internal space, modern features, and a prestigious location makes this property a standout option for buyers looking for comfort, privacy, and long-term value.",
             "location":"Oak Drive, Wimbledon SW19",
 			"pictures": [
                 "/images/FifthImage1.png",
@@ -131,7 +131,7 @@
             "bedrooms":3,
             "price":650000,
             "tenure":"Leasehold",
-            "description":"Modern three bedroom apartment located in a vibrant city area. The property benefits from a balcony, open-plan living space, and easy access to public transport and local shops.",
+            "description": "This modern three bedroom apartment is situated in a vibrant and well-connected city location, offering contemporary living with excellent convenience. The property features a spacious open-plan living and dining area, a modern fitted kitchen, and access to a private balcony that provides additional outdoor space. The bedrooms are well-sized, making the apartment suitable for families or shared living arrangements.\n\nResidents benefit from immediate access to public transport links, local shops, restaurants, and other essential services. The property’s central location and modern design make it particularly attractive to professionals seeking an urban lifestyle, as well as investors looking for strong rental potential.",
             "location":"Commercial Road, London E1",
 			"pictures": [
                 "/images/SixthImage1.jpg",
@@ -156,7 +156,7 @@
             "bedrooms":2,
             "price":495000,
             "tenure":"Freehold",
-            "description":"Charming two bedroom starter home located in a peaceful residential area. The property includes a cosy living room, fitted kitchen, rear garden, and off-street parking.",
+            "description": "This charming two bedroom starter home is located in a peaceful residential area, offering a welcoming and comfortable living environment. The property includes a cosy living room, a fitted kitchen with sufficient storage space, and a private rear garden ideal for outdoor activities or relaxation. The layout is practical and well-suited for small families or first-time buyers.\n\nThe home is conveniently positioned close to local schools, shops, and transport links, providing easy access to nearby town centres. Its combination of affordability, location, and functional design makes it an excellent choice for buyers entering the property market or seeking a low-maintenance family home.",
             "location":"Park Lane, Sutton SM1",
 			"pictures": [
                 "/images/SeventhImage1.jpg",

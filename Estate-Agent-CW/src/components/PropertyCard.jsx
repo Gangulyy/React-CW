@@ -3,10 +3,12 @@ function PropertyCard({ property, onSelect }) {
     <div
         className="propertyCard"
         onClick={() => onSelect(property)}
+        style={{ width: '100%' }}
     >
     <img
         src={property.pictures[0]}
         alt="Property"
+        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
     />
 
       <h3>{property.type}</h3>

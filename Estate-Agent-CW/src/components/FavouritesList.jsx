@@ -91,9 +91,9 @@ const styles = {
     transition: 'all 0.2s'
   },
   grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-    gap: '20px'
+      display: 'grid',
+      gridTemplateColumns: '1fr',
+      gap: '16px'
   }
 };
 

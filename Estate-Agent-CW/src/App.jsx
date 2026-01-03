@@ -89,10 +89,13 @@ function clearFavourites() {
   // inputs
   return (
 
-    <div className = "app">
-      <h1>Estate Agent App</h1>
+<div className="app">
+  <h1>Estate Agent App</h1>
 
-      <div className="searchLayout">
+  {selectedProperty === null ? (
+    /* 🔍 SEARCH PAGE */
+    <div className="searchLayout">
+      {/* LEFT */}
       <SearchForm
         selectedType={selectedType}
         setSelectedType={setSelectedType}
@@ -112,47 +115,41 @@ function clearFavourites() {
         setPostcode={setPostcode}
       />
 
-      <div>
-        {selectedProperty === null ? (
-          <>
-            <FavouritesList
-              favourites={favourites}
-              onSelect={(property) => {
-                setSelectedProperty(property);
-                setSelectedImage(0);
-                setActiveTab('description');
-              }}
-              clearFavourites={clearFavourites}
-            />
+      {/* CENTER */}
+      <PropertyList
+        properties={filteredProperties}
+        onSelect={(property) => {
+          setSelectedProperty(property);
+          setSelectedImage(0);
+          setActiveTab('description');
+        }}
+      />
 
-            <PropertyList
-              properties={filteredProperties}
-              onSelect={(property) => {
-                setSelectedProperty(property);
-                setSelectedImage(0);
-                setActiveTab('description');
-              }}
-            />
-          </>
-        ) : (
-          <PropertyDetails
-            property={selectedProperty}
-            selectedImage={selectedImage}
-            setSelectedImage={setSelectedImage}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            favourites={favourites}
-            setFavourites={setFavourites}
-            onBack={() => setSelectedProperty(null)}
-          />
-        )}
-      </div>
-      </div>
-
-
-
-
+      {/* RIGHT */}
+      <FavouritesList
+        favourites={favourites}
+        onSelect={(property) => {
+          setSelectedProperty(property);
+          setSelectedImage(0);
+          setActiveTab('description');
+        }}
+        clearFavourites={clearFavourites}
+      />
     </div>
+  ) : (
+    /* 🏠 PROPERTY DETAILS PAGE */
+    <PropertyDetails
+      property={selectedProperty}
+      selectedImage={selectedImage}
+      setSelectedImage={setSelectedImage}
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      favourites={favourites}
+      setFavourites={setFavourites}
+      onBack={() => setSelectedProperty(null)}
+    />
+  )}
+</div>
   );
 }
 

@@ -24,7 +24,7 @@
   padding: 50px 20px;
   margin-bottom: 30px;
 
-  background-color: rgb(1, 13, 82);
+  background-color: rgb(59, 28, 194);
 
   box-shadow: 0 10px 25px rgb(157, 255, 247);
 }
@@ -155,12 +155,12 @@
 }
 
 
-/* Disable sticky on mobile */
-@media (max-width: 968px) {
-  .searchColumn {
-    position: static;
+  /* Disable sticky on mobile */
+  @media (max-width: 968px) {
+    .searchColumn {
+      position: static;
+    }
   }
-}
 
 
   /*-----Mobile */

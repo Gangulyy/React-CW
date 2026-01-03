@@ -98,7 +98,7 @@ return (
       {selectedProperty === null ? (
         <div className="searchLayout">
 
-          {/* LEFT COLUMN – Search */}
+          {/* Search */}
           <div className="searchColumn">
             <SearchForm
               selectedType={selectedType}
@@ -120,7 +120,7 @@ return (
             />
           </div>
 
-          {/* CENTER COLUMN – Available Properties */}
+          {/* Available Properties */}
           <div className="resultsColumn">
             <PropertyList
               properties={filteredProperties}
@@ -132,7 +132,7 @@ return (
             />
           </div>
 
-          {/* RIGHT COLUMN – Favourites */}
+          {/* Favourites */}
           <div className="favouritesColumn">
             <FavouritesList
               favourites={favourites}
@@ -141,8 +141,9 @@ return (
                 setSelectedImage(0);
                 setActiveTab('description');
               }}
-              clearFavourites={clearFavourites}
+              setFavourites={setFavourites}
             />
+
           </div>
 
         </div>

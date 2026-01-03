@@ -1,13 +1,18 @@
 import PropertyCard from './PropertyCard';
 
-function FavouritesList({ favourites, onSelect, clearFavourites }) {
+function FavouritesList({ favourites, onSelect, setFavourites }) {
+
+  function removeFavourite(id) {
+  setFavourites((prev) => prev.filter((fav) => fav.id !== id));
+  }
+
 
   if (favourites.length === 0) {
     return (
       <div style={styles.emptyContainer}>
         <div style={styles.emptyIcon}>♥️</div>
         <p style={styles.emptyText}>No favourite properties yet</p>
-        <p style={styles.emptySubtext}>Click the heart icon on any property to save it here</p>
+        <p style={styles.emptySubtext}>Click the add to favourite button on any property to save it here</p>
       </div>
     );
   }
@@ -16,20 +21,38 @@ function FavouritesList({ favourites, onSelect, clearFavourites }) {
     <div style={styles.container}>
       <div style={styles.header}>
         <h2 style={styles.heading}>♥️ Favourites ({favourites.length})</h2>
-        <button onClick={clearFavourites} style={styles.clearButton}>
+        <button
+          onClick={() => setFavourites([])}
+          style={styles.clearButton}
+        >
           Clear All
         </button>
+
       </div>
 
       <div style={styles.grid}>
         {favourites.map((property) => (
-          <PropertyCard
-            key={property.id}
-            property={property}
-            onSelect={onSelect}
-          />
+          <div key={property.id} style={styles.cardWrapper}>
+
+            <button
+              style={styles.removeButton}
+              onClick={(e) => {
+                e.stopPropagation(); 
+                removeFavourite(property.id);
+              }}
+              title="Remove from favourites"
+            >
+              ❌
+            </button>
+
+            <PropertyCard
+              property={property}
+              onSelect={onSelect}
+            />
+          </div>
         ))}
       </div>
+
     </div>
   );
 }
@@ -94,7 +117,25 @@ const styles = {
       display: 'grid',
       gridTemplateColumns: '1fr',
       gap: '16px'
+  },
+
+  cardWrapper: {
+    position: 'relative'
+  },
+  removeButton: {
+    position: 'absolute',
+    top: '8px',
+    right: '8px',
+    background: 'white',
+    border: 'none',
+    fontSize: '1.1rem',
+    cursor: 'pointer',
+    padding: '6px',
+    borderRadius: '50%',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+    zIndex: 2
   }
+
 };
 
 export default FavouritesList;

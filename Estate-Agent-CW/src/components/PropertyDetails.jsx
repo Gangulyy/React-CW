@@ -65,72 +65,88 @@ function PropertyDetails({
             setFavourites={setFavourites}
           />
 
-          {/* Tabs */}
-          <div style={styles.tabs}>
-            <button 
-              onClick={() => setActiveTab('description')}
-              style={activeTab === 'description' ? styles.tabActive : styles.tab}
-            >
-              Description
-            </button>
 
-            <button 
-              onClick={() => setActiveTab('floorplan')}
-              style={activeTab === 'floorplan' ? styles.tabActive : styles.tab}
-            >
-              Floor Plan
-            </button>
+        </div>
+      </div>
+    
+        {/* Tabs */}
+        <div style={styles.tabs}>
+          <button 
+            onClick={() => setActiveTab('description')}
+            style={activeTab === 'description' ? styles.tabActive : styles.tab}
+          >
+            Description
+          </button>
 
-            <button 
-              onClick={() => setActiveTab('map')}
-              style={activeTab === 'map' ? styles.tabActive : styles.tab}
-            >
-              Map
-            </button>
-          </div>
+          <button 
+            onClick={() => setActiveTab('floorplan')}
+            style={activeTab === 'floorplan' ? styles.tabActive : styles.tab}
+          >
+            Floor Plan
+          </button>
 
-          {/* Tabs content */}
-          <div style={styles.tabContent}>
-            {activeTab === 'description' && (
-              <p style={styles.description}>{property.description}</p>
-            )}
+          <button 
+            onClick={() => setActiveTab('map')}
+            style={activeTab === 'map' ? styles.tabActive : styles.tab}
+          >
+            Map
+          </button>
+        </div>
 
-            {activeTab === 'floorplan' && (
-              property.floorPlan ? (
+        {/* Tabs content */}
+        <div style={styles.tabContent}>
+          {activeTab === 'description' && (
+            <p style={styles.description}>{property.description}</p>
+          )}
+
+          {activeTab === 'floorplan' && (
+            property.floorPlan ? (
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '20px'
+                }}
+              >
                 <img
                   src={property.floorPlan}
                   alt="Floor plan"
                   style={{
                     width: '100%',
-                    maxWidth: '600px',
-                    borderRadius: '8px',
-                    border: '1px solid #e2e8f0'
+                    maxWidth: '900px',
+                    maxHeight: '600px',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    border: '1px solid #e2e8f0',
+                    background: '#f8fafc',
+                    padding: '12px'
                   }}
                 />
-              ) : (
-                <div style={styles.placeholder}>
-                  <div style={styles.placeholderIcon}>📐</div>
-                  <p>No floor plan available for this property</p>
-                </div>
-              )
-            )}
-
-            {activeTab === 'map' && (
-              <div style={{ width: '100%', height: '400px', borderRadius: '12px', overflow: 'hidden' }}>
-                <iframe
-                  title="Property location map"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
-                />
               </div>
-            )}
+            ) : (
+              <div style={styles.placeholder}>
+                <div style={styles.placeholderIcon}>📐</div>
+                <p>No floor plan available for this property</p>
+              </div>
+            )
+          )}
+
+
+          {activeTab === 'map' && (
+            <div style={{ width: '100%', height: '400px', borderRadius: '12px', overflow: 'hidden' }}>
+              <iframe
+                title="Property location map"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
+              />
+            </div>
+          )}
           </div>
-        </div>
-      </div>
     </div>
   );
 }

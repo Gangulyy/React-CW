@@ -6,7 +6,8 @@ function FavouritesList({ favourites, onSelect, clearFavourites }) {
     return (
       <div style={styles.emptyContainer}>
         <div style={styles.emptyIcon}>♥️</div>
-      
+        <p style={styles.emptyText}>No favourite properties yet</p>
+        <p style={styles.emptySubtext}>Click the heart icon on any property to save it here</p>   
       </div>
     );
   }
@@ -43,6 +44,16 @@ const styles = {
     fontSize: '3rem',
     marginBottom: '16px',
     opacity: 0.3
+  },
+  emptyText: {
+    fontSize: '1.125rem',
+    fontWeight: '600',
+    color: '#64748b',
+    marginBottom: '8px'
+  },
+  emptySubtext: {
+    fontSize: '0.875rem',
+    color: '#94a3b8'
   },
 };
 

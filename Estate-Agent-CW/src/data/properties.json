@@ -9,9 +9,13 @@
 			"description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
 			"location":"Petts Wood Road, Petts Wood, Orpington BR5",
 			"pictures": [
-                "/images/pic.jpg",
-                "/images/flats.jpg",
-                "/images/flats3.jpg"
+                "/images/FirstImage1.png",
+                "/images/FirstImage2.png",
+                "/images/FirstImage3.png",
+                "/images/FirstImage5.png",
+                "/images/FirstImage6.png",
+                "/images/FirstImage7.png",
+                "/images/FirstImage8.png"
             ],
 			"url":"properties/prop1.html",
             "added": {
@@ -19,7 +23,7 @@
                 "day":12,
                 "year":2022
             },
-            "floorPlan": "/images/flats3.jpg"
+            "floorPlan": "/images/FirstFloorPlan.jpg"
         },
 		{
             "id":"prop2",
@@ -30,16 +34,21 @@
 			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
 			"location":"Crofton Road Orpington BR6",
 			"pictures": [
-                "/images/flats3.jpg",
-                "/images/prop1pic2small.jpg",
-                "/images/prop1pic3small.jpg"
+                "/images/SecondImage1.jpg",
+                "/images/SecondImage2.jpg",
+                "/images/SecondImage3.jpg",
+                "/images/SecondImage4.jpg",
+                "/images/SecondImage5.jpg",
+                "/images/SecondImage6.jpg",
+                "/images/SecondImage7.jpg"
             ],
 			"url":"properties/prop2.html",
             "added": {
                 "month":"September",
                 "day":14,
                 "year":2022
-            }
+            },
+            "floorPlan": "/images/SecondFloorPlan.jpg"
         },
                 {
             "id":"prop3",
@@ -50,16 +59,21 @@
             "description":"Spacious four bedroom detached house located in a quiet residential neighbourhood. The property features a large living room, modern fitted kitchen, dining area, and a private garden. Ideal for families looking for extra space and comfort.",
             "location":"Maple Avenue, Bromley BR1",
 			"pictures": [
-                "/images/flats.jpg",
-                "/images/prop1pic2small.jpg",
-                "/images/prop1pic3small.jpg"
+                "/images/ThirdImage1.png",
+                "/images/ThirdImage2.jpg",
+                "/images/ThirdImage3.jpg",
+                "/images/ThirdImage4.jpg",
+                "/images/ThirdImage5.jpg",
+                "/images/ThirdImage6.png",
+                "/images/ThirdImage7.png"
             ],
             "url":"properties/prop3.html",
             "added": {
                 "month":"January",
                 "day":5,
                 "year":2023
-            }
+            },
+            "floorPlan": "/images/ThirdFloorPlan.jpg"
         },
         {
             "id":"prop4",
@@ -70,16 +84,21 @@
             "description":"Well-presented one bedroom apartment situated close to local amenities and transport links. The property includes an open-plan kitchen and living area, a modern bathroom, and a spacious bedroom.",
             "location":"High Street, Croydon CR0",
 			"pictures": [
-                "/images/flats3.jpg",
-                "/images/prop1pic2small.jpg",
-                "/images/prop1pic3small.jpg"
+                "/images/FourthImage1.jpg",
+                "/images/FourthImage2.jpg",
+                "/images/FourthImage3.jpg",
+                "/images/FourthImage4.jpg",
+                "/images/FourthImage5.jpg",
+                "/images/FourthImage6.jpg",
+                "/images/FourthImage7.jpg"
             ],
             "url":"properties/prop4.html",
             "added": {
                 "month":"March",
                 "day":18,
                 "year":2023
-            }
+            },
+            "floorPlan": "/images/FourthFloorPlan.jpg"
         },
         {
             "id":"prop5",
@@ -90,16 +109,21 @@
             "description":"Impressive five bedroom luxury home offering generous living space across two floors. Features include multiple reception rooms, a high-end kitchen, landscaped garden, and private driveway.",
             "location":"Oak Drive, Wimbledon SW19",
 			"pictures": [
-                "/images/prop1pic1small.jpg",
-                "/images/prop1pic2small.jpg",
-                "/images/prop1pic3small.jpg"
+                "/images/FifthImage1.png",
+                "/images/FifthImage2.png",
+                "/images/FifthImage3.jpg",
+                "/images/FifthImage4.jpg",
+                "/images/FifthImage5.jpg",
+                "/images/FifthImage6.jpg",
+                "/images/FifthImage7.jpg"
             ],
             "url":"properties/prop5.html",
             "added": {
                 "month":"June",
                 "day":22,
                 "year":2023
-            }
+            },
+            "floorPlan": "/images/FifthFloorPlan.jpg"
         },
         {
             "id":"prop6",
@@ -110,16 +134,21 @@
             "description":"Modern three bedroom apartment located in a vibrant city area. The property benefits from a balcony, open-plan living space, and easy access to public transport and local shops.",
             "location":"Commercial Road, London E1",
 			"pictures": [
-                "/images/prop1pic1small.jpg",
-                "/images/prop1pic2small.jpg",
-                "/images/prop1pic3small.jpg"
+                "/images/SixthImage1.jpg",
+                "/images/SixthImage2.jpg",
+                "/images/SixthImage3.jpg",
+                "/images/SixthImage4.jpg",
+                "/images/SixthImage5.jpg",
+                "/images/SixthImage6.jpg",
+                "/images/SixthImage7.jpg"
             ],
             "url":"properties/prop6.html",
             "added": {
                 "month":"August",
                 "day":10,
                 "year":2023
-            }
+            },
+            "floorPlan": "/images/SixthFloorPlan.jpg"
         },
         {
             "id":"prop7",
@@ -130,16 +159,21 @@
             "description":"Charming two bedroom starter home located in a peaceful residential area. The property includes a cosy living room, fitted kitchen, rear garden, and off-street parking.",
             "location":"Park Lane, Sutton SM1",
 			"pictures": [
-                "/images/prop1pic1small.jpg",
-                "/images/prop1pic2small.jpg",
-                "/images/prop1pic3small.jpg"
+                "/images/SeventhImage1.jpg",
+                "/images/SeventhImage2.jpg",
+                "/images/SeventhImage3.jpg",
+                "/images/SeventhImage4.jpg",
+                "/images/SeventhImage5.png",
+                "/images/SeventhImage6.jpg",
+                "/images/SeventhImage7.jpg"
             ],
             "url":"properties/prop7.html",
             "added": {
                 "month":"February",
                 "day":2,
                 "year":2024
-            }
+            },
+            "floorPlan": "/images/SeventhFloorPlan.jpg"
         }
 
         

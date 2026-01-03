@@ -58,6 +58,13 @@ const styles = {
     fontSize: '0.875rem',
     color: '#94a3b8'
   },
+  container: {
+    background: 'white',
+    borderRadius: '12px',
+    padding: '24px',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    marginBottom: '24px'
+  },
 };
 
 export default FavouritesList;

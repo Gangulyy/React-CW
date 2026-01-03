@@ -79,6 +79,17 @@ const styles = {
     color: '#1e293b',
     margin: 0
   },
+  clearButton: {
+    padding: '8px 16px',
+    fontSize: '0.875rem',
+    fontWeight: '600',
+    color: '#ef4444',
+    background: 'white',
+    border: '2px solid #ef4444',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'all 0.2s'
+  },
 };
 
 export default FavouritesList;

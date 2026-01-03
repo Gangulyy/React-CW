@@ -18,112 +18,114 @@ function SearchForm({
 }) {
   return (
     <div style={styles.container}>
-      <h2 style={styles.heading}>Search Properties</h2>
+      <div style={styles.scrollArea}>
+        <h2 style={styles.heading}>Search Properties</h2>
 
-      <div style={styles.formGroup}>
-        <label style={styles.label}>Property Type</label>
-        <select
-          style={styles.select}
-          value={selectedType}
-          onChange={(event) => setSelectedType(event.target.value)}
-        >
-          <option value="">Any</option>
-          <option value="House">House</option>
-          <option value="Flat">Flat</option>
-        </select>
-      </div>
-
-      <div style={styles.formGroup}>
-        <label style={styles.label}>
-          Minimum Price: <span style={styles.rangeValue}>£{(minPrice || 0).toLocaleString()}</span>
-        </label>
-        <input
-            style={styles.range}
-            type="range"
-            min="0"
-            max="1500000"
-            step="50000"
-            value={minPrice || 0}
-            onChange={(event) => setMinPrice(event.target.value)}
-        />
-      </div>
-
-      <div style={styles.formGroup}>
-        <label style={styles.label}>
-          Maximum Price: <span style={styles.rangeValue}>£{(maxPrice || 1500000).toLocaleString()}</span>
-        </label>
-        <input
-            style={styles.range}
-            type="range"
-            min="0"
-            max="1500000"
-            step="50000"
-            value={maxPrice || 1500000}
-            onChange={(event) => setMaxPrice(event.target.value)}
-        />
-      </div>
-
-      <div style={styles.formGroup}>
-        <label style={styles.label}>Minimum Bedrooms</label>
-        <select
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Property Type</label>
+          <select
             style={styles.select}
-            value={minBedrooms}
-            onChange={(event) => setMinBedrooms(event.target.value)}
-        >
+            value={selectedType}
+            onChange={(event) => setSelectedType(event.target.value)}
+          >
             <option value="">Any</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
-        </select>
-      </div>
+            <option value="House">House</option>
+            <option value="Flat">Flat</option>
+          </select>
+        </div>
 
-      <div style={styles.formGroup}>
-        <label style={styles.label}>Maximum Bedrooms</label>
-        <select
-            style={styles.select}
-            value={maxBedrooms}
-            onChange={(event) => setMaxBedrooms(event.target.value)}
-        >
-            <option value="">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-      </div>
-
-      <div style={styles.formGroup}>
-        <label style={styles.label}>Date From</label>
-        <input
-            style={styles.input}
-            type="date"
-            value={addedAfter}
-            onChange={(event) => setAddedAfter(event.target.value)}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Minimum Price: <span style={styles.rangeValue}>£{(minPrice || 0).toLocaleString()}</span>
+          </label>
+          <input
+              style={styles.range}
+              type="range"
+              min="0"
+              max="1500000"
+              step="50000"
+              value={minPrice || 0}
+              onChange={(event) => setMinPrice(event.target.value)}
           />
-      </div>
+        </div>
 
-      <div style={styles.formGroup}>
-        <label style={styles.label}>Date To</label>
-        <input
-            style={styles.input}
-            type="date"
-            value={addedBefore}
-            onChange={(event) => setAddedBefore(event.target.value)}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Maximum Price: <span style={styles.rangeValue}>£{(maxPrice || 1500000).toLocaleString()}</span>
+          </label>
+          <input
+              style={styles.range}
+              type="range"
+              min="0"
+              max="1500000"
+              step="50000"
+              value={maxPrice || 1500000}
+              onChange={(event) => setMaxPrice(event.target.value)}
           />
-      </div>
+        </div>
 
-      <div style={styles.formGroup}>
-        <label style={styles.label}>Postcode Area</label>
-        <input
-            style={styles.input}
-            type="text"
-            value={postcode}
-            onChange={(event) => setPostcode(event.target.value)}
-            placeholder="e.g., BR1, NW1"
-          />
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Minimum Bedrooms</label>
+          <select
+              style={styles.select}
+              value={minBedrooms}
+              onChange={(event) => setMinBedrooms(event.target.value)}
+          >
+              <option value="">Any</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+          </select>
+        </div>
+
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Maximum Bedrooms</label>
+          <select
+              style={styles.select}
+              value={maxBedrooms}
+              onChange={(event) => setMaxBedrooms(event.target.value)}
+          >
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
+        </div>
+
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Date From</label>
+          <input
+              style={styles.input}
+              type="date"
+              value={addedAfter}
+              onChange={(event) => setAddedAfter(event.target.value)}
+            />
+        </div>
+
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Date To</label>
+          <input
+              style={styles.input}
+              type="date"
+              value={addedBefore}
+              onChange={(event) => setAddedBefore(event.target.value)}
+            />
+        </div>
+
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Postcode Area</label>
+          <input
+              style={styles.input}
+              type="text"
+              value={postcode}
+              onChange={(event) => setPostcode(event.target.value)}
+              placeholder="e.g., BR1, NW1"
+            />
+        </div>
       </div>
     </div>
   );
@@ -138,7 +140,13 @@ const styles = {
     position: 'sticky',
     top: '20px',
     maxHeight: 'calc(100vh - 40px)',
-    overflowY: 'auto'
+    overflow: 'hidden'
+  },
+  scrollArea: {
+    paddingRight: '8px',  
+    maxHeight: 'calc(100vh - 70px)',
+    overflowY: 'auto',
+    paddingBottom: '20px'
   },
   heading: {
     fontSize: '1.5rem',

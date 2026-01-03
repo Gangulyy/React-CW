@@ -10,9 +10,9 @@
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
-  color: white;
-  margin-bottom: 60px;
-  margin-top: 60px;
+  color: black;
+  margin-bottom: 30px;
+  margin-top: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   letter-spacing: -0.5px;
 
@@ -21,7 +21,7 @@
 /*-----Responsive Layout */
 .searchLayout {
   display: grid;
-  grid-template-columns: 300px minmax(0, 2fr) 320px;
+  grid-template-columns: 320px minmax(0, 2fr) 280px;
   gap: 20px;
   align-items: start;
 }
@@ -72,6 +72,25 @@
   color: var(--primary-color);
   font-weight: 600;
 }
+
+.searchColumn {
+  position: sticky;
+  top: 20px;
+}
+
+.resultsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Disable sticky on mobile */
+@media (max-width: 968px) {
+  .searchColumn {
+    position: static;
+  }
+}
+
 
   /*-----Mobile */
   @media (max-width: 968px) {

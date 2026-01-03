@@ -93,51 +93,57 @@ function clearFavourites() {
   <h1>Estate Agent App</h1>
 
   {selectedProperty === null ? (
-    /* 🔍 SEARCH PAGE */
     <div className="searchLayout">
-      {/* LEFT */}
-      <SearchForm
-        selectedType={selectedType}
-        setSelectedType={setSelectedType}
-        minPrice={minPrice}
-        setMinPrice={setMinPrice}
-        maxPrice={maxPrice}
-        setMaxPrice={setMaxPrice}
-        minBedrooms={minBedrooms}
-        setMinBedrooms={setMinBedrooms}
-        maxBedrooms={maxBedrooms}
-        setMaxBedrooms={setMaxBedrooms}
-        addedAfter={addedAfter}
-        setAddedAfter={setAddedAfter}
-        addedBefore={addedBefore}
-        setAddedBefore={setAddedBefore}
-        postcode={postcode}
-        setPostcode={setPostcode}
-      />
 
-      {/* CENTER */}
-      <PropertyList
-        properties={filteredProperties}
-        onSelect={(property) => {
-          setSelectedProperty(property);
-          setSelectedImage(0);
-          setActiveTab('description');
-        }}
-      />
+      {/* LEFT COLUMN – Search */}
+      <div className="searchColumn">
+        <SearchForm
+          selectedType={selectedType}
+          setSelectedType={setSelectedType}
+          minPrice={minPrice}
+          setMinPrice={setMinPrice}
+          maxPrice={maxPrice}
+          setMaxPrice={setMaxPrice}
+          minBedrooms={minBedrooms}
+          setMinBedrooms={setMinBedrooms}
+          maxBedrooms={maxBedrooms}
+          setMaxBedrooms={setMaxBedrooms}
+          addedAfter={addedAfter}
+          setAddedAfter={setAddedAfter}
+          addedBefore={addedBefore}
+          setAddedBefore={setAddedBefore}
+          postcode={postcode}
+          setPostcode={setPostcode}
+        />
+      </div>
 
-      {/* RIGHT */}
-      <FavouritesList
-        favourites={favourites}
-        onSelect={(property) => {
-          setSelectedProperty(property);
-          setSelectedImage(0);
-          setActiveTab('description');
-        }}
-        clearFavourites={clearFavourites}
-      />
+      {/* CENTER COLUMN – Available Properties */}
+      <div className="resultsColumn">
+        <PropertyList
+          properties={filteredProperties}
+          onSelect={(property) => {
+            setSelectedProperty(property);
+            setSelectedImage(0);
+            setActiveTab('description');
+          }}
+        />
+      </div>
+
+      {/* RIGHT COLUMN – Favourites */}
+      <div className="favouritesColumn">
+        <FavouritesList
+          favourites={favourites}
+          onSelect={(property) => {
+            setSelectedProperty(property);
+            setSelectedImage(0);
+            setActiveTab('description');
+          }}
+          clearFavourites={clearFavourites}
+        />
+      </div>
+
     </div>
   ) : (
-    /* 🏠 PROPERTY DETAILS PAGE */
     <PropertyDetails
       property={selectedProperty}
       selectedImage={selectedImage}
@@ -150,6 +156,7 @@ function clearFavourites() {
     />
   )}
 </div>
+
   );
 }
 

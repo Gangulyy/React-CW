@@ -12,9 +12,23 @@ function PropertyDetails({
 }) {
   return (
     <div style={styles.container}>
-      <button onClick={onBack} style={styles.backButton}>
+      <button
+        onClick={onBack}
+        style={styles.backButton}
+        onMouseEnter={(e) => {
+          e.target.style.background = '#383b42ff';
+          e.target.style.color = 'white';
+          e.target.style.borderColor = '#434549ff';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = 'white';
+          e.target.style.color = '#64748b';
+          e.target.style.borderColor = '#e2e8f0';
+        }}
+      >
         ← Back to Search
       </button>
+
 
       <div style={styles.content}>
         {/* Image Gallery */}

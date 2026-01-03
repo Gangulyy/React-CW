@@ -13,20 +13,23 @@ function FavouritesList({ favourites, onSelect, clearFavourites }) {
   }
 
   return (
-    <div>
-      <h2>Favourite Properties</h2>
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <h2 style={styles.heading}>♥️ Favourites ({favourites.length})</h2>
+        <button onClick={clearFavourites} style={styles.clearButton}>
+          Clear All
+        </button>
+      </div>
 
-      <button onClick={clearFavourites}>
-        Clear All Favourites
-      </button>
-
-      {favourites.map((property) => (
-        <PropertyCard
-          key={property.id}
-          property={property}
-          onSelect={onSelect}
-        />
-      ))}
+      <div style={styles.grid}>
+        {favourites.map((property) => (
+          <PropertyCard
+            key={property.id}
+            property={property}
+            onSelect={onSelect}
+          />
+        ))}
+      </div>
     </div>
   );
 }

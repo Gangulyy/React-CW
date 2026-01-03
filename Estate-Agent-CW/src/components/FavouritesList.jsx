@@ -3,7 +3,11 @@ import PropertyCard from './PropertyCard';
 function FavouritesList({ favourites, onSelect, clearFavourites }) {
 
   if (favourites.length === 0) {
-    return <p>No favourite properties yet.</p>;
+    return (
+      <div style={styles.emptyContainer}>
+      
+      </div>
+    );
   }
 
   return (
@@ -24,5 +28,16 @@ function FavouritesList({ favourites, onSelect, clearFavourites }) {
     </div>
   );
 }
+
+const styles = {
+  emptyContainer: {
+    background: 'white',
+    borderRadius: '12px',
+    padding: '40px 24px',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+    marginBottom: '24px'
+  },
+};
 
 export default FavouritesList;

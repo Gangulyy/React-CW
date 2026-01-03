@@ -7,7 +7,7 @@ function FavouritesList({ favourites, onSelect, clearFavourites }) {
       <div style={styles.emptyContainer}>
         <div style={styles.emptyIcon}>♥️</div>
         <p style={styles.emptyText}>No favourite properties yet</p>
-        <p style={styles.emptySubtext}>Click the heart icon on any property to save it here</p>   
+        <p style={styles.emptySubtext}>Click the heart icon on any property to save it here</p>
       </div>
     );
   }
@@ -90,6 +90,11 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.2s'
   },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '20px'
+  }
 };
 
 export default FavouritesList;

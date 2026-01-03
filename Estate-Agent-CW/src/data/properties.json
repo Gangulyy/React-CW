@@ -18,7 +18,8 @@
                 "month":"October",
                 "day":12,
                 "year":2022
-            }
+            },
+            "floorPlan": "/images/flats3.jpg"
         },
 		{
             "id":"prop2",

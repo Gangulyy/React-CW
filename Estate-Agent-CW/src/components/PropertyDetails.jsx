@@ -96,11 +96,25 @@ function PropertyDetails({
             )}
 
             {activeTab === 'floorplan' && (
-              <div style={styles.placeholder}>
-                <div style={styles.placeholderIcon}>📐</div>
-                <p>Floor plan will be shown here</p>
-              </div>
+              property.floorPlan ? (
+                <img
+                  src={property.floorPlan}
+                  alt="Floor plan"
+                  style={{
+                    width: '100%',
+                    maxWidth: '600px',
+                    borderRadius: '8px',
+                    border: '1px solid #e2e8f0'
+                  }}
+                />
+              ) : (
+                <div style={styles.placeholder}>
+                  <div style={styles.placeholderIcon}>📐</div>
+                  <p>No floor plan available for this property</p>
+                </div>
+              )
             )}
+
 
             {activeTab === 'map' && (
               <div style={styles.placeholder}>

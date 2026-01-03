@@ -5,6 +5,8 @@ import PropertyDetails from './components/PropertyDetails';
 import SearchForm from './components/SearchForm';
 import PropertyList from './components/PropertyList';
 import FavouritesList from './components/FavouritesList';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 
@@ -87,77 +89,80 @@ function clearFavourites() {
 
    
   // inputs
-  return (
+return (
+  <>
+    <Header />
+    <div className="app">
 
-<div className="app">
-  <h1>Estate Agent App</h1>
 
-  {selectedProperty === null ? (
-    <div className="searchLayout">
+      {selectedProperty === null ? (
+        <div className="searchLayout">
 
-      {/* LEFT COLUMN – Search */}
-      <div className="searchColumn">
-        <SearchForm
-          selectedType={selectedType}
-          setSelectedType={setSelectedType}
-          minPrice={minPrice}
-          setMinPrice={setMinPrice}
-          maxPrice={maxPrice}
-          setMaxPrice={setMaxPrice}
-          minBedrooms={minBedrooms}
-          setMinBedrooms={setMinBedrooms}
-          maxBedrooms={maxBedrooms}
-          setMaxBedrooms={setMaxBedrooms}
-          addedAfter={addedAfter}
-          setAddedAfter={setAddedAfter}
-          addedBefore={addedBefore}
-          setAddedBefore={setAddedBefore}
-          postcode={postcode}
-          setPostcode={setPostcode}
-        />
-      </div>
+          {/* LEFT COLUMN – Search */}
+          <div className="searchColumn">
+            <SearchForm
+              selectedType={selectedType}
+              setSelectedType={setSelectedType}
+              minPrice={minPrice}
+              setMinPrice={setMinPrice}
+              maxPrice={maxPrice}
+              setMaxPrice={setMaxPrice}
+              minBedrooms={minBedrooms}
+              setMinBedrooms={setMinBedrooms}
+              maxBedrooms={maxBedrooms}
+              setMaxBedrooms={setMaxBedrooms}
+              addedAfter={addedAfter}
+              setAddedAfter={setAddedAfter}
+              addedBefore={addedBefore}
+              setAddedBefore={setAddedBefore}
+              postcode={postcode}
+              setPostcode={setPostcode}
+            />
+          </div>
 
-      {/* CENTER COLUMN – Available Properties */}
-      <div className="resultsColumn">
-        <PropertyList
-          properties={filteredProperties}
-          onSelect={(property) => {
-            setSelectedProperty(property);
-            setSelectedImage(0);
-            setActiveTab('description');
-          }}
-        />
-      </div>
+          {/* CENTER COLUMN – Available Properties */}
+          <div className="resultsColumn">
+            <PropertyList
+              properties={filteredProperties}
+              onSelect={(property) => {
+                setSelectedProperty(property);
+                setSelectedImage(0);
+                setActiveTab('description');
+              }}
+            />
+          </div>
 
-      {/* RIGHT COLUMN – Favourites */}
-      <div className="favouritesColumn">
-        <FavouritesList
+          {/* RIGHT COLUMN – Favourites */}
+          <div className="favouritesColumn">
+            <FavouritesList
+              favourites={favourites}
+              onSelect={(property) => {
+                setSelectedProperty(property);
+                setSelectedImage(0);
+                setActiveTab('description');
+              }}
+              clearFavourites={clearFavourites}
+            />
+          </div>
+
+        </div>
+      ) : (
+        <PropertyDetails
+          property={selectedProperty}
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
           favourites={favourites}
-          onSelect={(property) => {
-            setSelectedProperty(property);
-            setSelectedImage(0);
-            setActiveTab('description');
-          }}
-          clearFavourites={clearFavourites}
+          setFavourites={setFavourites}
+          onBack={() => setSelectedProperty(null)}
         />
-      </div>
-
+      )}
     </div>
-  ) : (
-    <PropertyDetails
-      property={selectedProperty}
-      selectedImage={selectedImage}
-      setSelectedImage={setSelectedImage}
-      activeTab={activeTab}
-      setActiveTab={setActiveTab}
-      favourites={favourites}
-      setFavourites={setFavourites}
-      onBack={() => setSelectedProperty(null)}
-    />
-  )}
-</div>
 
-  );
+    <Footer />
+  </>
+);
 }
 
 export default App;

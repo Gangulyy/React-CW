@@ -20,6 +20,16 @@ const bedroomOptions = [
   { value: '5', label: '5' }
 ];
 
+// ---- postcode options -----
+const postcodeOptions = [
+  { value: 'BR1', label: 'BR1' },
+  { value: 'BR5', label: 'BR5' },
+  { value: 'NW1', label: 'NW1' },
+  { value: 'SW19', label: 'SW19' },
+  { value: 'E1', label: 'E1' }
+];
+
+
 
 /*displays all the search filters on the left side */
 function SearchForm({
@@ -184,12 +194,20 @@ function SearchForm({
         {/* --- postcode area filter ----*/}
         <div style={styles.formGroup}>
           <label style={styles.label}>Postcode Area</label>
-          <input
-              style={styles.input}
-              type="text"
-              value={postcode}
-              onChange={(event) => setPostcode(event.target.value)}
-              placeholder="e.g., BR1, NW1"
+            <Select
+              options={postcodeOptions}
+              value={postcodeOptions.find(opt => opt.value === postcode)}
+              onChange={(option) => setPostcode(option ? option.value : '')}
+              placeholder="Select postcode"
+              isClearable
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  borderRadius: '8px',
+                  borderColor: '#e2e8f0',
+                  minHeight: '42px'
+                })
+              }}
             />
         </div>
       </div>

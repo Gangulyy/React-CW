@@ -7,7 +7,7 @@ import PropertyList from './components/PropertyList';
 import FavouritesList from './components/FavouritesList';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
+import RemoveZone from './components/RemoveZone';
 
 
 function App() {
@@ -129,6 +129,8 @@ return (
                 setSelectedImage(0);
                 setActiveTab('description');
               }}
+              favourites={favourites}
+              setFavourites={setFavourites}
             />
           </div>
 
@@ -144,6 +146,10 @@ return (
               setFavourites={setFavourites}
             />
 
+            {/* Remove Zone - for dragging favourites out */}
+            {favourites.length > 0 && (
+              <RemoveZone setFavourites={setFavourites} />
+            )}
           </div>
 
         </div>

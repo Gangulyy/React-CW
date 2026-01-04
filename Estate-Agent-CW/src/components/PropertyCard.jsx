@@ -1,8 +1,22 @@
-function PropertyCard({ property, onSelect }) {
+function PropertyCard({ property, onSelect, isDraggable = false }) {
+  const handleDragStart = (e) => {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('application/json', JSON.stringify(property));
+    e.currentTarget.style.opacity = '0.5';
+  };
+
+  const handleDragEnd = (e) => {
+    e.currentTarget.style.opacity = '1';
+  };
+
   return (
     <div
       className="property-card"
       onClick={() => onSelect(property)}
+      draggable={isDraggable}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      style={{ cursor: isDraggable ? 'move' : 'pointer' }}
     >
       <img
         src={property.pictures[0]}
@@ -17,8 +31,8 @@ function PropertyCard({ property, onSelect }) {
       <button
         className="view-more-btn"
         onClick={(e) => {
-          e.stopPropagation();   // prevents card click
-          onSelect(property);    // go to property details
+          e.stopPropagation();
+          onSelect(property);
         }}
       >
         View More

@@ -1,24 +1,83 @@
 import PropertyCard from './PropertyCard';
+import { useState } from 'react';
 
 function FavouritesList({ favourites, onSelect, setFavourites }) {
+  const [isDragOver, setIsDragOver] = useState(false);
 
   function removeFavourite(id) {
-  setFavourites((prev) => prev.filter((fav) => fav.id !== id));
+    setFavourites((prev) => prev.filter((fav) => fav.id !== id));
   }
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    try {
+      const propertyData = e.dataTransfer.getData('application/json');
+      const property = JSON.parse(propertyData);
+      
+      // Check if property already exists in favourites
+      const exists = favourites.some((fav) => fav.id === property.id);
+      
+      if (!exists) {
+        setFavourites((prev) => [...prev, property]);
+      }
+    } catch (error) {
+      console.error('Error adding to favourites:', error);
+    }
+  };
+
+  // Handle drag from favourites to remove
+  const handleFavDragStart = (e, property) => {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('favourite-remove', property.id);
+  };
 
   if (favourites.length === 0) {
     return (
-      <div style={styles.emptyContainer}>
+      <div 
+        style={{
+          ...styles.emptyContainer,
+          border: isDragOver ? '3px dashed #2563eb' : '2px dashed #e2e8f0',
+          backgroundColor: isDragOver ? '#eff6ff' : 'white'
+        }}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
         <div style={styles.emptyIcon}>♥️</div>
         <p style={styles.emptyText}>No favourite properties yet</p>
-        <p style={styles.emptySubtext}>Click the add to favourite button on any property to save it here</p>
+        <p style={styles.emptySubtext}>
+          {isDragOver 
+            ? '✨ Drop property here to add to favourites!' 
+            : 'Drag properties here or click the favourite button'}
+        </p>
       </div>
     );
   }
 
   return (
-    <div style={styles.container}>
+    <div 
+      style={{
+        ...styles.container,
+        border: isDragOver ? '3px dashed #2563eb' : 'none',
+        backgroundColor: isDragOver ? '#eff6ff' : 'white'
+      }}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
       <div style={styles.header}>
         <h2 style={styles.heading}>♥️ Favourites ({favourites.length})</h2>
         <button
@@ -27,13 +86,22 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
         >
           Clear All
         </button>
-
       </div>
+
+      {isDragOver && (
+        <div style={styles.dropIndicator}>
+          ✨ Drop here to add to favourites
+        </div>
+      )}
 
       <div style={styles.grid}>
         {favourites.map((property) => (
-          <div key={property.id} style={styles.cardWrapper}>
-
+          <div 
+            key={property.id} 
+            style={styles.cardWrapper}
+            draggable
+            onDragStart={(e) => handleFavDragStart(e, property)}
+          >
             <button
               style={styles.removeButton}
               onClick={(e) => {
@@ -48,11 +116,11 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
             <PropertyCard
               property={property}
               onSelect={onSelect}
+              isDraggable={false}
             />
           </div>
         ))}
       </div>
-
     </div>
   );
 }
@@ -64,7 +132,12 @@ const styles = {
     padding: '40px 24px',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
-    marginBottom: '24px'
+    marginBottom: '24px',
+    transition: 'all 0.3s ease',
+    minHeight: '200px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   emptyIcon: {
     fontSize: '3rem',
@@ -86,7 +159,8 @@ const styles = {
     borderRadius: '12px',
     padding: '24px',
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-    marginBottom: '24px'
+    marginBottom: '24px',
+    transition: 'all 0.3s ease'
   },
   header: {
     display: 'flex',
@@ -113,14 +187,25 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.2s'
   },
-  grid: {
-      display: 'grid',
-      gridTemplateColumns: '1fr',
-      gap: '16px'
+  dropIndicator: {
+    padding: '16px',
+    marginBottom: '16px',
+    backgroundColor: '#dbeafe',
+    border: '2px dashed #2563eb',
+    borderRadius: '8px',
+    textAlign: 'center',
+    fontSize: '1rem',
+    fontWeight: '600',
+    color: '#2563eb'
   },
-
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '16px'
+  },
   cardWrapper: {
-    position: 'relative'
+    position: 'relative',
+    cursor: 'move'
   },
   removeButton: {
     position: 'absolute',
@@ -135,7 +220,6 @@ const styles = {
     boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
     zIndex: 2
   }
-
 };
 
 export default FavouritesList;

@@ -1,4 +1,6 @@
-/*-----App Layout */
+/*-----App Layout------ */
+
+/* Main app container - centers content and sets max width for better readability */
 .app {
   max-width: 1800px;
   margin: 0 auto;
@@ -6,6 +8,7 @@
   min-height: 100vh
 }
 
+/* Main page title styling */
 .app > h1 {
   text-align: center;
   font-size: 2.5rem;
@@ -18,7 +21,8 @@
 
 }
 
-/*------header */
+/*------header ------*/
+/* Top banner styling */
 .header {
   text-align: center;
   padding: 50px 20px;
@@ -29,6 +33,7 @@
   box-shadow: 0 10px 25px rgb(157, 255, 247);
 }
 
+/* Header main heading */
 .header h1 {
   font-size: 2.8rem;
   font-weight: 800;
@@ -37,6 +42,7 @@
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
+/* Tagline text below header title */
 .header .tagline {
   font-size: 1.1rem;
   font-weight: 500;
@@ -45,22 +51,24 @@
 
 
 /*-----Responsive Layout */
+/* Search (left) | Results (center) | Favorites (right) */
 .searchLayout {
   display: grid;
-  grid-template-columns: 320px minmax(0, 2fr) 280px;
-  gap: 20px;
-  align-items: start;
+  grid-template-columns: 320px minmax(0, 2fr) 280px; /* Fixed left/right, flexible middle */
+  gap: 20px; /* Space between columns */
+  align-items: start; /* Align items to top */
 }
 
 
-/*-----Property Cards */
+/*-----Property Cards ------*/
+/* Individual property card styling */
 .property-card {
   display: flex;            
-  flex-direction: column;     
+  flex-direction: column;   /* Stack content vertically */   
   height: 100%;  
   background: var(--surface);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  border-radius: var(--radius-lg); /*in index.css*/
+  overflow: hidden;  /* Hide content outside border */
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
@@ -68,13 +76,14 @@
              
 }
 
-
+/* Hover effect - lifts card up and increases shadow */
 .property-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+/* Property card image styling */
 .property-card img {
   width: 100%;
   height: 220px;
@@ -82,6 +91,7 @@
   display: block;
 }
 
+/* Property type heading - house/flat*/
 .property-card h3 {
   font-size: 1.25rem;
   color: var(--text-primary);
@@ -95,26 +105,34 @@
   font-size: 0.95rem;
 }
 
+/* Remove bottom margin from last paragraph */
 .property-card p:last-child {
-  margin-bottom: 16px;
+  margin-bottom: 16px; /* Space before button */
 }
-  
+
+/* Bold labels (Price, Bedrooms, Location) in paragraphs */
 .property-card p strong {
   color: var(--primary-color);
   font-weight: 600;
 }
 
+/* -------Layout columns---- */
+/* Search form column - stays stick to screen while scrolling */
 .searchColumn {
   position: sticky;
   top: 20px;
 }
 
+/* Results column - vertical list of property cards */
 .resultsColumn {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack items vertically */
   gap: 24px;
 }
 
+
+/* ----------- Buttons-----*/
+/* View More button at bottom of results */
 .view-more-btn {
   margin: auto 16px 16px; 
   padding: 10px 14px;
@@ -129,15 +147,17 @@
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+/* View More button hover effect */
 .view-more-btn:hover {
   background-color: var(--primary-dark);
   transform: translateY(-1px);
 }
 
 
-/* footer*/
+/* --------footer-------*/
+
 .footer {
-  margin: 0;
+  margin: 0; /* No margin */
   margin-top: 100px;
   padding: 40px 20px;
   text-align: center;
@@ -148,14 +168,15 @@
   width: 100%;
 }
 
+/* Footer text paragraphs */
 .footer p {
-  margin: 6px 0;
+  margin: 6px 3;
   font-size: 0.9rem;
   color: #ede9fe;
 }
 
-
-  /* Disable sticky on mobile */
+/* -----Responsive Design --------*/
+  /* Disable sticky search column on mobile */
   @media (max-width: 968px) {
     .searchColumn {
       position: static;
@@ -163,10 +184,10 @@
   }
 
 
-  /*-----Mobile */
+  /*Change grid to single column  */
   @media (max-width: 968px) {
     .searchLayout {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* Single column layout */
     }
     
     .app > h1 {
@@ -174,13 +195,14 @@
     }
   }
 
+/* Adjust for small screens (phones) */
   @media (max-width: 640px) {
     .app {
       padding: 16px;
     }
     
     .app > h1 {
-      font-size: 1.75rem;
+      font-size: 1.75rem; /* Even smaller title */
       margin-bottom: 20px;
     }
   }

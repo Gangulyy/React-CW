@@ -2,28 +2,35 @@ import PropertyCard from './PropertyCard';
 import { useState } from 'react';
 
 function FavouritesList({ favourites, onSelect, setFavourites }) {
+  
+  // Track if user is dragging over this zone  
   const [isDragOver, setIsDragOver] = useState(false);
 
+  // Filter out the favourite with the given ID
   function removeFavourite(id) {
     setFavourites((prev) => prev.filter((fav) => fav.id !== id));
   }
 
+  // Called when dragging a property card over the favourites list
   const handleDragOver = (e) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
     setIsDragOver(true);
   };
 
+  // Called when drag leaves the favourites list
   const handleDragLeave = (e) => {
     e.preventDefault();
     setIsDragOver(false);
   };
-
+  
+  // Called when user drops a property onto the favourites list
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragOver(false);
     
     try {
+      // Extract property data from the dragged element
       const propertyData = e.dataTransfer.getData('application/json');
       const property = JSON.parse(propertyData);
       
@@ -34,22 +41,27 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
         setFavourites((prev) => [...prev, property]);
       }
     } catch (error) {
+      // Log error if JSON parsing fails
       console.error('Error adding to favourites:', error);
     }
   };
 
-  // Handle drag from favourites to remove
+  // When dragging a favourite card out, store its ID for removal
   const handleFavDragStart = (e, property) => {
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('favourite-remove', property.id);
   };
-
+  
+  // Shows this when no favourites exist
   if (favourites.length === 0) {
     return (
       <div 
         style={{
           ...styles.emptyContainer,
+          // Highlight border when dragging over
           border: isDragOver ? '3px dashed #2563eb' : '2px dashed #e2e8f0',
+          
+          // Highlight background when dragging over
           backgroundColor: isDragOver ? '#eff6ff' : 'white'
         }}
         onDragOver={handleDragOver}
@@ -57,7 +69,9 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
         onDrop={handleDrop}
       >
         <div style={styles.emptyIcon}>♥️</div>
+
         <p style={styles.emptyText}>No favourite properties yet</p>
+        
         <p style={styles.emptySubtext}>
           {isDragOver 
             ? '✨ Drop property here to add to favourites!' 
@@ -67,6 +81,7 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
     );
   }
 
+  // Shows this when there are favourite properties
   return (
     <div 
       style={{
@@ -78,6 +93,7 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
+      {/* Header with title and clear button */}
       <div style={styles.header}>
         <h2 style={styles.heading}>♥️ Favourites ({favourites.length})</h2>
         <button
@@ -87,13 +103,15 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
           Clear All
         </button>
       </div>
-
+      
+      {/* Visual hint when dragging over */}
       {isDragOver && (
         <div style={styles.dropIndicator}>
           ✨ Drop here to add to favourites
         </div>
       )}
 
+      {/* List of favourite property cards */}
       <div style={styles.grid}>
         {favourites.map((property) => (
           <div 
@@ -102,6 +120,7 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
             draggable
             onDragStart={(e) => handleFavDragStart(e, property)}
           >
+            {/* Delete button overlay */}
             <button
               style={styles.removeButton}
               onClick={(e) => {
@@ -112,7 +131,8 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
             >
               ❌
             </button>
-
+            
+            {/* Display the property card (not draggable itself) */}
             <PropertyCard
               property={property}
               onSelect={onSelect}
@@ -124,6 +144,8 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
     </div>
   );
 }
+
+/* Styles for the component */
 
 const styles = {
   emptyContainer: {

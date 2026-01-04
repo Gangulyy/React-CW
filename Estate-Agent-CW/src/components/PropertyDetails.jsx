@@ -1,3 +1,4 @@
+// Shows a detailed view for a single property
 import FavouriteButton from './FavouriteButton';
 
 function PropertyDetails({
@@ -12,9 +13,13 @@ function PropertyDetails({
 }) {
   return (
     <div style={styles.container}>
+      
+      {/* Back button: returns user to search results */}
       <button
         onClick={onBack}
         style={styles.backButton}
+
+        // Small hover effect applied inline
         onMouseEnter={(e) => {
           e.target.style.background = '#383b42ff';
           e.target.style.color = 'white';
@@ -29,11 +34,14 @@ function PropertyDetails({
         ← Back to Search
       </button>
 
-
+      {/* Top content: two-column layout (gallery | key details) */}
       <div style={styles.content}>
+
         {/* Image Gallery */}
         <div style={styles.imageSection}>
           <img
+
+            // Show the selected picture
             src={property.pictures[selectedImage]}
             alt="Property"
             style={styles.mainImage}
@@ -45,8 +53,10 @@ function PropertyDetails({
                 key={index}
                 src={img}
                 alt="Thumbnail"
+
                 style={{
                   ...styles.thumbnail,
+                  // Highlight the active thumbnail
                   border: selectedImage === index ? '3px solid #2563eb' : '2px solid #e2e8f0',
                   opacity: selectedImage === index ? 1 : 0.7
                 }}
@@ -60,8 +70,10 @@ function PropertyDetails({
         <div style={styles.detailsSection}>
           <h2 style={styles.heading}>{property.type}</h2>
           
+          {/* Prominent price tag */}
           <div style={styles.priceTag}>£{property.price.toLocaleString()}</div>
-
+          
+          {/* Small info grid for bedroom count and location */}
           <div style={styles.infoGrid}>
             <div style={styles.infoItem}>
               <div style={styles.infoLabel}>Bedrooms</div>
@@ -73,6 +85,7 @@ function PropertyDetails({
             </div>
           </div>
 
+          {/* Favourite button */}
           <FavouriteButton
             property={property}
             favourites={favourites}
@@ -83,7 +96,7 @@ function PropertyDetails({
         </div>
       </div>
     
-        {/* Tabs */}
+        {/* Tabs floorplan/ description/ map */}
         <div style={styles.tabs}>
           <button 
             onClick={() => setActiveTab('description')}
@@ -109,10 +122,13 @@ function PropertyDetails({
 
         {/* Tabs content */}
         <div style={styles.tabContent}>
+
+          {/* description: long text */}
           {activeTab === 'description' && (
             <p style={styles.description}>{property.description}</p>
           )}
 
+          {/* floorplan: show image if available, else placeholder */}
           {activeTab === 'floorplan' && (
             property.floorPlan ? (
               <div
@@ -146,7 +162,7 @@ function PropertyDetails({
             )
           )}
 
-
+          {/* map: embed Google Maps with the property's location string */}
           {activeTab === 'map' && (
             <div style={{ width: '100%', height: '400px', borderRadius: '12px', overflow: 'hidden' }}>
               <iframe
@@ -156,6 +172,8 @@ function PropertyDetails({
                 style={{ border: 0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+
+                // encode the location to safely put it into the URL      
                 src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
               />
             </div>
@@ -165,6 +183,7 @@ function PropertyDetails({
   );
 }
 
+/* ----- Inline styles object ----- */
 const styles = {
   container: {
     background: 'white',

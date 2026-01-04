@@ -153,6 +153,16 @@
   transform: translateY(-1px);
 }
 
+/* Datepicker input field styling */
+.react-datepicker-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  color: #1e293b;
+}
 
 /* --------footer-------*/
 
@@ -182,6 +192,7 @@
       position: static;
     }
   }
+
 
 
   /*Change grid to single column  */

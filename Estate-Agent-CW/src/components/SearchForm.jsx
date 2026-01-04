@@ -1,3 +1,26 @@
+import Select from 'react-select';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+// ---- property type options -----
+// Dropdown options for selecting property type (House, Flat, or Any)
+const propertyTypeOptions = [
+  { value: '', label: 'Any' },
+  { value: 'House', label: 'House' },
+  { value: 'Flat', label: 'Flat' }
+];
+
+// ---- bedroom options -----
+const bedroomOptions = [
+  { value: '', label: 'Any' },
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
+  { value: '4', label: '4' },
+  { value: '5', label: '5' }
+];
+
+
 /*displays all the search filters on the left side */
 function SearchForm({
   selectedType,
@@ -25,16 +48,22 @@ function SearchForm({
         {/* -----property type filter---- */}
         <div style={styles.formGroup}>
           <label style={styles.label}>Property Type</label>
-          {/* drop down */}
-          <select
-            style={styles.select}
-            value={selectedType}
-            onChange={(event) => setSelectedType(event.target.value)}
-          >
-            <option value="">Any</option>
-            <option value="House">House</option>
-            <option value="Flat">Flat</option>
-          </select>
+
+          {/* react-select dropdown component */}
+          <Select
+            options={propertyTypeOptions}
+            value={propertyTypeOptions.find(opt => opt.value === selectedType)}
+            onChange={(option) => setSelectedType(option.value)}
+            placeholder="Any"
+            styles={{
+              control: (base) => ({
+                ...base,
+                borderRadius: '8px',
+                borderColor: '#e2e8f0',
+                minHeight: '42px'
+              })
+            }}
+          />
         </div>
 
         {/* ---minimum price filter ----*/}
@@ -76,58 +105,80 @@ function SearchForm({
         {/* ---minimum bedrooms filter ----*/}
         <div style={styles.formGroup}>
           <label style={styles.label}>Minimum Bedrooms</label>
-          {/*Dropdown*/}
-          <select
-              style={styles.select}
-              value={minBedrooms}
-              onChange={(event) => setMinBedrooms(event.target.value)}
-          >
-              <option value="">Any</option>
-              <option value="1">1+</option>
-              <option value="2">2+</option>
-              <option value="3">3+</option>
-              <option value="4">4+</option>
-              <option value="5">5+</option>
-          </select>
+          
+          {/* react-select dropdown component */}
+          <Select
+            options={bedroomOptions}
+            value={bedroomOptions.find(opt => opt.value === minBedrooms)}
+            onChange={(option) => setMinBedrooms(option.value)}
+            placeholder="Any"
+            styles={{
+              // Custom styling for the dropdown button
+              control: (base) => ({
+                ...base,
+                borderRadius: '8px',
+                borderColor: '#e2e8f0',
+                minHeight: '42px'
+              })
+            }}
+          />
+
         </div>
 
         {/* ---maximum bedrooms filter ----*/}
         <div style={styles.formGroup}>
           <label style={styles.label}>Maximum Bedrooms</label>
-          <select
-              style={styles.select}
-              value={maxBedrooms}
-              onChange={(event) => setMaxBedrooms(event.target.value)}
-          >
-              <option value="">Any</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-          </select>
+          
+          {/* react-select dropdown component */}
+          <Select
+            options={bedroomOptions}
+            value={bedroomOptions.find(opt => opt.value === maxBedrooms)}
+            onChange={(option) => setMaxBedrooms(option.value)}
+            placeholder="Any"
+            styles={{
+              // Custom styling for the dropdown button
+              control: (base) => ({
+                ...base,
+                borderRadius: '8px',
+                borderColor: '#e2e8f0',
+                minHeight: '42px'
+              })
+            }}
+          />
+
         </div>
 
         {/* ---date from filters ---- (properties added after this date)*/}
         <div style={styles.formGroup}>
           <label style={styles.label}>Date From</label>
-          <input
-              style={styles.input}
-              type="date"
-              value={addedAfter}
-              onChange={(event) => setAddedAfter(event.target.value)}
-            />
+          
+          {/* react-datepicker component */}
+          <DatePicker
+            selected={addedAfter ? new Date(addedAfter) : null}
+            onChange={(date) =>
+              setAddedAfter(date ? date.toISOString().split('T')[0] : '')
+            }
+            placeholderText="Select start date"
+            dateFormat="dd/MM/yyyy"
+            className="react-datepicker-input"
+          />
         </div>
 
         {/* ---date to filters ---- (properties added before this date)*/}
         <div style={styles.formGroup}>
           <label style={styles.label}>Date To</label>
-          <input
-              style={styles.input}
-              type="date"
-              value={addedBefore}
-              onChange={(event) => setAddedBefore(event.target.value)}
-            />
+          
+          {/* react-datepicker component */}
+          <DatePicker
+            selected={addedBefore ? new Date(addedBefore) : null}
+            onChange={(date) =>
+              setAddedBefore(date ? date.toISOString().split('T')[0] : '')
+            }
+            placeholderText="Select end date"
+            dateFormat="dd/MM/yyyy"
+            className="react-datepicker-input"
+          />
+
         </div>
 
         {/* --- postcode area filter ----*/}
@@ -163,6 +214,7 @@ const styles = {
 
   /* Scrollable area inside the container */
   scrollArea: {
+    paddingLeft: '8px',
     paddingRight: '8px',  
     maxHeight: 'calc(100vh - 70px)',
     overflowY: 'auto',

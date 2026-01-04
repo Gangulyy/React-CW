@@ -148,6 +148,8 @@ function FavouritesList({ favourites, onSelect, setFavourites }) {
 /* Styles for the component */
 
 const styles = {
+
+  // Empty container (no favourites yet)
   emptyContainer: {
     background: 'white',
     borderRadius: '12px',
@@ -161,21 +163,29 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center'
   },
+
+  //  empty icon (heart emoji)
   emptyIcon: {
     fontSize: '3rem',
     marginBottom: '16px',
     opacity: 0.3
   },
+
+  //  empty text (main message)
   emptyText: {
     fontSize: '1.125rem',
     fontWeight: '600',
     color: '#64748b',
     marginBottom: '8px'
   },
+
+  //  empty subtext (helper message)
   emptySubtext: {
     fontSize: '0.875rem',
     color: '#94a3b8'
   },
+
+  // Main container when favourites exist
   container: {
     background: 'white',
     borderRadius: '12px',
@@ -184,6 +194,8 @@ const styles = {
     marginBottom: '24px',
     transition: 'all 0.3s ease'
   },
+
+  // Header with title and clear button
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -192,12 +204,16 @@ const styles = {
     flexWrap: 'wrap',
     gap: '12px'
   },
+
+  // Heading "Favourites (X)"
   heading: {
     fontSize: '1.5rem',
     fontWeight: '700',
     color: '#1e293b',
     margin: 0
   },
+
+  // Clear all button
   clearButton: {
     padding: '8px 16px',
     fontSize: '0.875rem',
@@ -209,6 +225,8 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.2s'
   },
+
+  // Drop indicator shown when dragging over
   dropIndicator: {
     padding: '16px',
     marginBottom: '16px',
@@ -220,15 +238,21 @@ const styles = {
     fontWeight: '600',
     color: '#2563eb'
   },
+
+  // Grid layout for favourite property cards
   grid: {
     display: 'grid',
     gridTemplateColumns: '1fr',
     gap: '16px'
   },
+
+  // Card Wrapper (container for each favourite)
   cardWrapper: {
     position: 'relative',
     cursor: 'move'
   },
+
+  // Remove button (top-right corner of card)
   removeButton: {
     position: 'absolute',
     top: '8px',

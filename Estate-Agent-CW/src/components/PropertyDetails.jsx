@@ -35,7 +35,7 @@ function PropertyDetails({
       </button>
 
       {/* Top content: two-column layout (gallery | key details) */}
-      <div style={styles.content}>
+      <div className="property-details-content">
 
         {/* Image Gallery */}
         <div style={styles.imageSection}>
@@ -202,14 +202,6 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.2s',
     marginBottom: '24px'
-  },
-  content: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '32px',
-    '@media (max-width: 968px)': {
-      gridTemplateColumns: '1fr'
-    }
   },
   imageSection: {
     display: 'flex',

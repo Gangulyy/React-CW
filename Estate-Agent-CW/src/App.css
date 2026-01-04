@@ -217,3 +217,30 @@
       margin-bottom: 20px;
     }
   }
+
+
+  /* ================================
+   Property Details – Responsive Layout
+   ================================ */
+
+.property-details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .property-details-content {
+    grid-template-columns: 1fr;
+  }
+
+  .property-details-content img {
+    height: auto;
+    max-height: 300px;
+  }
+
+  .property-details-content > div {
+    width: 100%;
+  }
+}
